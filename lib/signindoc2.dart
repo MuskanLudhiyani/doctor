@@ -8,6 +8,7 @@ class signindoc2 extends StatefulWidget {
 }
 
 class _signindoc2State extends State<signindoc2> {
+
   TextEditingController username = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();

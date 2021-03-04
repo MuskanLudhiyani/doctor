@@ -1,6 +1,10 @@
+import 'package:doctor/authentication.dart';
 import 'package:flutter/material.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:convert' as convert;
+import 'main.dart';
+import 'package:provider/provider.dart';
 
 
 
@@ -13,10 +17,11 @@ class _SignupdState extends State<Signupd> {
   TextEditingController username = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff9994FA),
+        backgroundColor: Color(0xff9994FA),
 
 
         body: SingleChildScrollView(
@@ -26,7 +31,10 @@ class _SignupdState extends State<Signupd> {
                 children: <Widget>[
                   Container(
                     height: 400,
-                    width:  MediaQuery.of(context).size.width,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(40),
@@ -40,7 +48,8 @@ class _SignupdState extends State<Signupd> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                            image: NetworkImage("https://i.pinimg.com/originals/cf/4e/c0/cf4ec0f1cd566491fe962ed9d2f68d67.jpg"),
+                            image: NetworkImage(
+                                "https://i.pinimg.com/originals/cf/4e/c0/cf4ec0f1cd566491fe962ed9d2f68d67.jpg"),
                             fit: BoxFit.fill,
 
                           ),
@@ -54,7 +63,6 @@ class _SignupdState extends State<Signupd> {
                   SizedBox(height: 10.0),
 
 
-
                   Padding(
                     padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: Theme(
@@ -63,7 +71,6 @@ class _SignupdState extends State<Signupd> {
                         primaryColorDark: Color(0xffFFFFFF),
                       ),
                       child: TextField(
-
                           controller: email,
                           cursorColor: Color(0xff90E5BF),
                           decoration: InputDecoration(
@@ -107,8 +114,6 @@ class _SignupdState extends State<Signupd> {
                               contentPadding:
                               EdgeInsets.symmetric(horizontal: 15),
                               hintText: "Password",
-
-
                               fillColor: Color(0xffFFFFFF),
                               border: OutlineInputBorder(
                                 borderSide: BorderSide.none,
@@ -135,7 +140,8 @@ class _SignupdState extends State<Signupd> {
                             color: Color(0xffF0EFFE),
                             blurRadius: 2.0,
                             spreadRadius: 0.0,
-                            offset: Offset(2.0, 2.0), // shadow direction: bottom right
+                            offset: Offset(
+                                2.0, 2.0), // shadow direction: bottom right
                           )
                         ],
                       ),
@@ -152,17 +158,17 @@ class _SignupdState extends State<Signupd> {
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'Montserrat')),
                               ),
-                              onTap:()
-                              {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => Signupd()),);
-
+                              onTap: () {
+                                context.read<authentication>().signIn(
+                                  email: email.text.trim(),
+                                  pass: password.text.trim(),
+                                );
                               }
                           )
                         ],
                       ),
                     ),
                   ),
-
 
 
                 ],

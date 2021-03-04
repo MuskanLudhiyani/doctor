@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'dart:convert' as convert;
-
-
 
 class Signupp extends StatefulWidget {
   @override
@@ -17,8 +14,6 @@ class _SignuppState extends State<Signupp> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xff9994FA),
-
-
         body: SingleChildScrollView(
           child: Container(
               child: Column(
@@ -36,25 +31,19 @@ class _SignuppState extends State<Signupp> {
                     ),
                     child: Center(
                       child: Container(
-
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
                             image: NetworkImage("https://image.freepik.com/free-vector/little-girl-get-temperature-check-new-normal-lifestyle-concept-flat-isolated-white-background_185694-60.jpg"),
                             fit: BoxFit.fill,
-
                           ),
                         ),
                         height: 250,
                         width: 250,
-
                       ),
                     ),
                   ),
                   SizedBox(height: 10.0),
-
-
-
                   Padding(
                     padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: Theme(
@@ -88,8 +77,6 @@ class _SignuppState extends State<Signupp> {
                               ))),
                     ),
                   ),
-
-
                   SizedBox(height: 10.0),
                   Padding(
                     padding: EdgeInsets.fromLTRB(20, 0, 20, 0),

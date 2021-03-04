@@ -17,16 +17,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        Provider<authentication>(
-          create: (_)=>authentication(FirebaseAuth.instance),
-        ),
-        StreamProvider(
-          create: (context) => context.read<authentication>().authStateChanges,
-        )
-      ],
-      child: MaterialApp(
+    return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
           // This is the theme of your application.
@@ -45,8 +36,7 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: MyHomePage(title: 'Flutter Demo Home Page'),
-      ),
-    );
+      );
   }
 }
 
@@ -162,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       onTap:()
                         {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Signupd()),);
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Signind()),);
 
                         }
                     )
@@ -247,14 +237,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-class AuthenticationWrapper extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User>();
-    if (firebaseUser != null) {
-      print('signed in');
-      return test();
-    }
-    return Signupd();
-  }}

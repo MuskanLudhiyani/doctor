@@ -8,29 +8,24 @@ import 'package:provider/provider.dart';
 import 'test.dart';
 import 'signindoc2.dart';
 
-
-
 class Signind extends StatefulWidget {
   @override
   _SignindState createState() => _SignindState();
 }
+
 class _SignindState extends State<Signind> {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        Provider<authentication>(
-          create: (_)=>authentication(FirebaseAuth.instance),
-        ),
-        StreamProvider(
-          create: (context) => context.read<authentication>().authStateChanges,
-        )
-      ],
-      child: AuthenticationWrapper()
-    );
+    return MultiProvider(providers: [
+      Provider<authentication>(
+        create: (_) => authentication(FirebaseAuth.instance),
+      ),
+      StreamProvider(
+        create: (context) => context.read<authentication>().authStateChanges,
+      )
+    ], child: AuthenticationWrapper());
   }
 }
-
 
 class AuthenticationWrapper extends StatelessWidget {
   @override
@@ -40,6 +35,6 @@ class AuthenticationWrapper extends StatelessWidget {
       print('signed in');
       return test();
     }
-    
     return signindoc2();
-  }}
+  }
+}

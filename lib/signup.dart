@@ -355,8 +355,12 @@ class _signupState extends State<signup> {
                               try{
                                 final newuser = await _auth.createUserWithEmailAndPassword(email:
                                      email, password: password);
+                                newuser.user.sendEmailVerification();
+
                                 if (newuser!=Null)
                                 {
+
+
                                   Navigator.push(context,  MaterialPageRoute(builder: (context) => landingpage()));
 
                                 }

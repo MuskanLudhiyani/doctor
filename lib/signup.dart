@@ -1,4 +1,8 @@
+import 'package:doctor/landingpage.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 
 class signup extends StatefulWidget {
@@ -7,14 +11,21 @@ class signup extends StatefulWidget {
 }
 
 class _signupState extends State<signup> {
-  TextEditingController name = TextEditingController();
-  TextEditingController age= TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
-  TextEditingController phoneNumber = TextEditingController();
-  TextEditingController bloodgroup = TextEditingController();
-  TextEditingController cpassword= TextEditingController();
-  String _gender;
+
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  DatabaseReference dbRef = FirebaseDatabase.instance.reference().child("Users");
+  // TextEditingController name = TextEditingController();
+  // TextEditingController age= TextEditingController();
+  // TextEditingController email = TextEditingController();
+  // TextEditingController password = TextEditingController();
+  // TextEditingController phoneNumber = TextEditingController();
+  // TextEditingController bloodgroup = TextEditingController();
+  // TextEditingController cpassword= TextEditingController();
+  // String _gender;
+  String email;
+  String password;
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,6 +40,201 @@ class _signupState extends State<signup> {
                       SizedBox(height: 80,),
 
 
+                      // Padding(
+                      //   padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      //   child: Theme(
+                      //     data: ThemeData(
+                      //       primaryColor: Color(0xffFFFFFF),
+                      //       primaryColorDark: Color(0xffFFFFFF),
+                      //     ),
+                      //     child: TextField(
+                      //         controller: name,
+                      //         cursorColor: Color(0xff90E5BF),
+                      //         decoration: InputDecoration(
+                      //             filled: true,
+                      //             hintText: "Name",
+                      //             suffixIcon: GestureDetector(
+                      //               child: Text(
+                      //                 "",
+                      //                 style: TextStyle(
+                      //                   color: Color(0xff90E5BF),
+                      //                 ),
+                      //               ),
+                      //             ),
+                      //             contentPadding:
+                      //             EdgeInsets.symmetric(horizontal: 15),
+                      //             fillColor: Color(0xffFFFFFF),
+                      //             border: OutlineInputBorder(
+                      //               borderSide: BorderSide.none,
+                      //               borderRadius: const BorderRadius.all(
+                      //                 const Radius.circular(10.0),
+                      //               ),
+                      //             ))),
+                      //   ),
+                      //
+                      // ),
+                      // SizedBox(
+                      //   height: 10,
+                      // ),
+                      // Padding(
+                      //   padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      //   child: Theme(
+                      //     data: ThemeData(
+                      //       primaryColor: Color(0xffFFFFFF),
+                      //       primaryColorDark: Color(0xffFFFFFF),
+                      //     ),
+                      //     child: TextField(
+                      //         controller: phoneNumber,
+                      //         cursorColor: Color(0xff90E5BF),
+                      //         decoration: InputDecoration(
+                      //             filled: true,
+                      //             hintText: "Phone Number",
+                      //             suffixIcon: GestureDetector(
+                      //               child: Text(
+                      //                 "",
+                      //                 style: TextStyle(
+                      //                   color: Color(0xff90E5BF),
+                      //                 ),
+                      //               ),
+                      //             ),
+                      //             contentPadding:
+                      //             EdgeInsets.symmetric(horizontal: 15),
+                      //             fillColor: Color(0xffFFFFFF),
+                      //             border: OutlineInputBorder(
+                      //               borderSide: BorderSide.none,
+                      //               borderRadius: const BorderRadius.all(
+                      //                 const Radius.circular(10.0),
+                      //               ),
+                      //             ))),
+                      //   ),
+                      //
+                      // ),
+                      // SizedBox(
+                      //   height: 10,
+                      // ),
+                      // Padding(
+                      //   padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      //   child: Theme(
+                      //     data: ThemeData(
+                      //       primaryColor: Color(0xffFFFFFF),
+                      //       primaryColorDark: Color(0xffFFFFFF),
+                      //     ),
+                      //     child: TextField(
+                      //         controller: bloodgroup,
+                      //         cursorColor: Color(0xff90E5BF),
+                      //         decoration: InputDecoration(
+                      //             filled: true,
+                      //             hintText: "Blood Group",
+                      //             suffixIcon: GestureDetector(
+                      //               child: Text(
+                      //                 "",
+                      //                 style: TextStyle(
+                      //                   color: Color(0xff90E5BF),
+                      //                 ),
+                      //               ),
+                      //             ),
+                      //             contentPadding:
+                      //             EdgeInsets.symmetric(horizontal: 15),
+                      //             fillColor: Color(0xffFFFFFF),
+                      //             border: OutlineInputBorder(
+                      //               borderSide: BorderSide.none,
+                      //               borderRadius: const BorderRadius.all(
+                      //                 const Radius.circular(10.0),
+                      //               ),
+                      //             ))),
+                      //   ),
+                      //
+                      // ),
+                      // SizedBox(height: 10,),
+                      // Padding(
+                      //   padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.center,
+                      //     children: [
+                      //       Theme(
+                      //         data: ThemeData(
+                      //           primaryColor: Color(0xffFFFFFF),
+                      //           primaryColorDark: Color(0xffFFFFFF),
+                      //         ),
+                      //         child: Container(
+                      //           width: 150,
+                      //           child: TextField(
+                      //
+                      //               controller: age,
+                      //               cursorColor: Color(0xff90E5BF),
+                      //               decoration: InputDecoration(
+                      //                   filled: true,
+                      //                   hintText: "Age",
+                      //                   suffixIcon: GestureDetector(
+                      //                     child: Text(
+                      //                       "",
+                      //                       style: TextStyle(
+                      //                         color: Color(0xff90E5BF),
+                      //                       ),
+                      //                     ),
+                      //                   ),
+                      //                   contentPadding:
+                      //                   EdgeInsets.symmetric(horizontal: 15),
+                      //                   fillColor: Color(0xffFFFFFF),
+                      //                   border: OutlineInputBorder(
+                      //                     borderSide: BorderSide.none,
+                      //                     borderRadius: const BorderRadius.all(
+                      //                       const Radius.circular(10.0),
+                      //                     ),
+                      //                   ))),
+                      //         ),
+                      //       ),
+                      //       SizedBox(
+                      //         width: 10,
+                      //       ),
+                      //
+                      //       Container(
+                      //         width: 150,
+                      //         decoration: BoxDecoration(
+                      //             borderRadius: BorderRadius.circular(10.0),
+                      //             color: Colors.white,
+                      //
+                      //         ),
+                      //         child: DropdownButton<String>(
+                      //
+                      //
+                      //           focusColor:Colors.black54,
+                      //           value: _gender,
+                      //
+                      //           elevation: 5,
+                      //           style: TextStyle(color: Colors.white),
+                      //
+                      //           items: <String>[
+                      //            "M", "F"
+                      //           ].map<DropdownMenuItem<String>>((String value) {
+                      //             return DropdownMenuItem<String>(
+                      //               value: value,
+                      //               child: Text(value,style:TextStyle(color:Colors.black54),),
+                      //             );
+                      //           }).toList(),
+                      //           hint:Text(
+                      //             "Gender",
+                      //             style: TextStyle(
+                      //                 color: Colors.black54,
+                      //                 fontSize: 14,
+                      //                 fontWeight: FontWeight.w500),
+                      //           ),
+                      //           onChanged: (String value) {
+                      //             setState(() {
+                      //               _gender = value;
+                      //             });
+                      //           },
+                      //         ),
+                      //       ),
+                      //     ],
+                      //
+                      //   ),
+                      // ),
+                      // SizedBox(
+                      //   height: 10,
+                      // ),
+
+
                       Padding(
                         padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                         child: Theme(
@@ -37,202 +243,10 @@ class _signupState extends State<signup> {
                             primaryColorDark: Color(0xffFFFFFF),
                           ),
                           child: TextField(
-                              controller: name,
-                              cursorColor: Color(0xff90E5BF),
-                              decoration: InputDecoration(
-                                  filled: true,
-                                  hintText: "Name",
-                                  suffixIcon: GestureDetector(
-                                    child: Text(
-                                      "",
-                                      style: TextStyle(
-                                        color: Color(0xff90E5BF),
-                                      ),
-                                    ),
-                                  ),
-                                  contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 15),
-                                  fillColor: Color(0xffFFFFFF),
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: const BorderRadius.all(
-                                      const Radius.circular(10.0),
-                                    ),
-                                  ))),
-                        ),
-
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                        child: Theme(
-                          data: ThemeData(
-                            primaryColor: Color(0xffFFFFFF),
-                            primaryColorDark: Color(0xffFFFFFF),
-                          ),
-                          child: TextField(
-                              controller: phoneNumber,
-                              cursorColor: Color(0xff90E5BF),
-                              decoration: InputDecoration(
-                                  filled: true,
-                                  hintText: "Phone Number",
-                                  suffixIcon: GestureDetector(
-                                    child: Text(
-                                      "",
-                                      style: TextStyle(
-                                        color: Color(0xff90E5BF),
-                                      ),
-                                    ),
-                                  ),
-                                  contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 15),
-                                  fillColor: Color(0xffFFFFFF),
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: const BorderRadius.all(
-                                      const Radius.circular(10.0),
-                                    ),
-                                  ))),
-                        ),
-
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                        child: Theme(
-                          data: ThemeData(
-                            primaryColor: Color(0xffFFFFFF),
-                            primaryColorDark: Color(0xffFFFFFF),
-                          ),
-                          child: TextField(
-                              controller: bloodgroup,
-                              cursorColor: Color(0xff90E5BF),
-                              decoration: InputDecoration(
-                                  filled: true,
-                                  hintText: "Blood Group",
-                                  suffixIcon: GestureDetector(
-                                    child: Text(
-                                      "",
-                                      style: TextStyle(
-                                        color: Color(0xff90E5BF),
-                                      ),
-                                    ),
-                                  ),
-                                  contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 15),
-                                  fillColor: Color(0xffFFFFFF),
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: const BorderRadius.all(
-                                      const Radius.circular(10.0),
-                                    ),
-                                  ))),
-                        ),
-
-                      ),
-                      SizedBox(height: 10,),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Theme(
-                              data: ThemeData(
-                                primaryColor: Color(0xffFFFFFF),
-                                primaryColorDark: Color(0xffFFFFFF),
-                              ),
-                              child: Container(
-                                width: 150,
-                                child: TextField(
-
-                                    controller: age,
-                                    cursorColor: Color(0xff90E5BF),
-                                    decoration: InputDecoration(
-                                        filled: true,
-                                        hintText: "Age",
-                                        suffixIcon: GestureDetector(
-                                          child: Text(
-                                            "",
-                                            style: TextStyle(
-                                              color: Color(0xff90E5BF),
-                                            ),
-                                          ),
-                                        ),
-                                        contentPadding:
-                                        EdgeInsets.symmetric(horizontal: 15),
-                                        fillColor: Color(0xffFFFFFF),
-                                        border: OutlineInputBorder(
-                                          borderSide: BorderSide.none,
-                                          borderRadius: const BorderRadius.all(
-                                            const Radius.circular(10.0),
-                                          ),
-                                        ))),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-
-                            Container(
-                              width: 150,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  color: Colors.white,
-
-                              ),
-                              child: DropdownButton<String>(
-
-
-                                focusColor:Colors.black54,
-                                value: _gender,
-
-                                elevation: 5,
-                                style: TextStyle(color: Colors.white),
-
-                                items: <String>[
-                                 "M", "F"
-                                ].map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value,style:TextStyle(color:Colors.black54),),
-                                  );
-                                }).toList(),
-                                hint:Text(
-                                  "Gender",
-                                  style: TextStyle(
-                                      color: Colors.black54,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                onChanged: (String value) {
-                                  setState(() {
-                                    _gender = value;
-                                  });
-                                },
-                              ),
-                            ),
-                          ],
-
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-
-
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                        child: Theme(
-                          data: ThemeData(
-                            primaryColor: Color(0xffFFFFFF),
-                            primaryColorDark: Color(0xffFFFFFF),
-                          ),
-                          child: TextField(
-                              controller: email,
+                              onChanged: (value){
+                                email=value;
+                              },
+                              keyboardType: TextInputType.emailAddress,
                               cursorColor: Color(0xff90E5BF),
                               decoration: InputDecoration(
                                   filled: true,
@@ -268,7 +282,9 @@ class _signupState extends State<signup> {
                           ),
                           child: TextField(
                               obscureText: true,
-                              controller: password,
+                              onChanged: (value){
+                                password=value;
+                              },
                               cursorColor: Color(0xff90E5BF),
                               decoration: InputDecoration(
                                   filled: true,
@@ -285,32 +301,32 @@ class _signupState extends State<signup> {
                         ),
                       ),
 
-                      SizedBox(height: 10.0),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                        child: Theme(
-                          data: ThemeData(
-                            primaryColor: Color(0xffFFFFFF),
-                            primaryColorDark: Color(0xffFFFFFF),
-                          ),
-                          child: TextField(
-                              obscureText: true,
-                              controller: cpassword,
-                              cursorColor: Color(0xff90E5BF),
-                              decoration: InputDecoration(
-                                  filled: true,
-                                  contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 15),
-                                  hintText: "Confirm Password",
-                                  fillColor: Color(0xffFFFFFF),
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: const BorderRadius.all(
-                                      const Radius.circular(10.0),
-                                    ),
-                                  ))),
-                        ),
-                      ),
+                      // SizedBox(height: 10.0),
+                      // Padding(
+                      //   padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      //   child: Theme(
+                      //     data: ThemeData(
+                      //       primaryColor: Color(0xffFFFFFF),
+                      //       primaryColorDark: Color(0xffFFFFFF),
+                      //     ),
+                      //     child: TextField(
+                      //         obscureText: true,
+                      //         controller: cpassword,
+                      //         cursorColor: Color(0xff90E5BF),
+                      //         decoration: InputDecoration(
+                      //             filled: true,
+                      //             contentPadding:
+                      //             EdgeInsets.symmetric(horizontal: 15),
+                      //             hintText: "Confirm Password",
+                      //             fillColor: Color(0xffFFFFFF),
+                      //             border: OutlineInputBorder(
+                      //               borderSide: BorderSide.none,
+                      //               borderRadius: const BorderRadius.all(
+                      //                 const Radius.circular(10.0),
+                      //               ),
+                      //             ))),
+                      //   ),
+                      // ),
                       SizedBox(height: 20,),
                       Padding(
                         padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -333,23 +349,38 @@ class _signupState extends State<signup> {
                               )
                             ],
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
+                          child: ElevatedButton(
+                            onPressed: () async {
+                              // print(email);
+                              // print(password);
+                              try{
+                                final newuser = await _auth.createUserWithEmailAndPassword(email:
+                                     email, password: password);
+                                if (newuser!=Null)
+                                {
+                                  Navigator.push(context,  MaterialPageRoute(builder: (context) => landingpage()));
 
-                              GestureDetector(
-                                  child: Center(
-                                    child: Text('Sign Up',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            color: Color(0xff9994FA),
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'Montserrat')),
-                                  ),
+                                }
+                              }
+                                     catch(e){
+                                print(e);
+                                     }
+                                    
+
+                            },
 
 
-                              )
-                            ],
+
+                              child: Center(
+                                child: Text('Sign Up',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: Color(0xff9994FA),
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Montserrat')),
+                              ),
+
+
                           ),
                         ),
                       ),

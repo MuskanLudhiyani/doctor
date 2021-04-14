@@ -6,7 +6,7 @@ import 'dart:convert' as convert;
 import 'main.dart';
 import 'package:provider/provider.dart';
 import 'test.dart';
-import 'signindoc2.dart';
+import 'signindocscreen.dart';
 
 class Signind extends StatefulWidget {
   @override
@@ -35,7 +35,8 @@ class AuthenticationWrapper extends StatelessWidget {
     if (firebaseUser != null) {
       print('signed in');
       return test();
+    } else {
+      return signindocscreen();
     }
-    return signindoc2();
   }
 }

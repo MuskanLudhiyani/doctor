@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'signindoctor.dart';
 import 'signinpatient.dart';
 import 'authentication.dart';
-import 'signindoc2.dart';
+import 'signindocscreen.dart';
 import 'package:provider/provider.dart';
 
 class error extends StatelessWidget {
@@ -14,6 +14,7 @@ class error extends StatelessWidget {
     return Error();
   }
 }
+
 class Error extends StatefulWidget {
   @override
   _ErrorState createState() => _ErrorState();
@@ -37,18 +38,22 @@ class _ErrorState extends State<Error> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image(image: NetworkImage("https://image.freepik.com/free-vector/404-error-page-found_24908-59517.jpg"),
-
+                      Image(
+                        image: NetworkImage(
+                            "https://image.freepik.com/free-vector/404-error-page-found_24908-59517.jpg"),
                       ),
-                      TextButton(onPressed: () {
-                        Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Signind()),);
-
-                      },
-                          child: Text(
-                        "Try Again",
-                        style: TextStyle(color: Colors.red,
-                      )))
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Signind()),
+                            );
+                          },
+                          child: Text("Try Again",
+                              style: TextStyle(
+                                color: Colors.red,
+                              )))
                     ],
                   ),
                 ),
@@ -60,4 +65,3 @@ class _ErrorState extends State<Error> {
     );
   }
 }
-

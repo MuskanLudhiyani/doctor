@@ -2,11 +2,9 @@ import 'package:doctor/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'dart:convert' as convert;
-import 'main.dart';
 import 'package:provider/provider.dart';
-import 'test.dart';
 import 'signindocscreen.dart';
+import 'landingpage.dart';
 
 class Signind extends StatefulWidget {
   @override
@@ -27,14 +25,13 @@ class _SignindState extends State<Signind> {
   }
 }
 
-
 class AuthenticationWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
     if (firebaseUser != null) {
       print('signed in');
-      return test();
+      return landingpage();
     } else {
       return signindocscreen();
     }

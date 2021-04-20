@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
-import 'signindoctor.dart';
+import 'screens/signindoctor.dart';
 import 'package:provider/provider.dart';
 
 class authentication{

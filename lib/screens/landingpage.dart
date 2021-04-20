@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'database.dart';
+import '../database.dart';
 
 class landingpage extends StatefulWidget {
   @override

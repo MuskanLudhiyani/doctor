@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'signindoctor.dart';
+import 'screens/signindoctor.dart';
 import 'signinpatient.dart';
 import 'authentication.dart';
-import 'signindocscreen.dart';
+import 'screens/signindocscreen.dart';
 import 'package:provider/provider.dart';
 
 class error extends StatelessWidget {

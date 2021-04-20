@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'signindoctor.dart';
+import 'screens/signindoctor.dart';
 import 'signinpatient.dart';
 import 'authentication.dart';
 import 'signup.dart';
@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     GestureDetector(
                         child: Center(
-                          child: Text('Sign in as a Doctor',
+                          child: Text('Sign In',
                               style: TextStyle(
                                   fontSize: 20,
                                   color: Color(0xff9994FA),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'authentication.dart';
+import '../authentication.dart';
 import 'package:provider/provider.dart';
 
 class signindocscreen extends StatefulWidget {

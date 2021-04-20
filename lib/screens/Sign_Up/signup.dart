@@ -22,7 +22,7 @@ class _signupState extends State<signup> {
   Widget build(BuildContext context) {
     return Container(
         child: Scaffold(
-            backgroundColor: Color(0xff9994FA),
+            backgroundColor: Color(0xffEFF0F5),
             body: SingleChildScrollView(
               child: Container(
                   child: Column(
@@ -314,61 +314,71 @@ class _signupState extends State<signup> {
                   SizedBox(
                     height: 20,
                   ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                    child: Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                            color: Colors.white,
-                            style: BorderStyle.solid,
-                            width: 1.0),
-                        color: Colors.transparent,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xffF0EFFE),
-                            blurRadius: 2.0,
-                            spreadRadius: 0.0,
-                            offset: Offset(
-                                2.0, 2.0), // shadow direction: bottom right
-                          )
-                        ],
-                      ),
-                      child: ElevatedButton(
-                        onPressed: () async {
-                          // print(email);
-                          // print(password);
-                          try {
-                            final newuser =
-                                await _auth.createUserWithEmailAndPassword(
-                                    email: email, password: password);
-                            newuser.user.sendEmailVerification();
-                            await DatabaseService(uid: newuser.user.uid)
-                                .updateUserData(name.text, int.parse(age.text),
-                                    _gender, phoneNumber.text, bloodgroup.text);
+                  GestureDetector(
+                    onTap: () async {
+                      // print(email);
+                      // print(password);
+                      try {
+                        final newuser =
+                        await _auth.createUserWithEmailAndPassword(
+                            email: email, password: password);
+                        newuser.user.sendEmailVerification();
+                        await DatabaseService(uid: newuser.user.uid)
+                            .updateUserData(name.text, int.parse(age.text),
+                            _gender, phoneNumber.text, bloodgroup.text);
 
-                            if (newuser != Null) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => landingpage()));
-                            }
-                          } catch (e) {
-                            print(e);
-                          }
-                        },
-                        child: Center(
-                          child: Text('Sign Up',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Color(0xff9994FA),
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Montserrat')),
+                        if (newuser != Null) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => landingpage()));
+                        }
+                      } catch (e) {
+                        print(e);
+                      }
+                    },
+
+
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child: Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                              color: Colors.white,
+                              style: BorderStyle.solid,
+                              width: 1.0),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xffF0EFFE),
+                              blurRadius: 2.0,
+                              spreadRadius: 0.0,
+                              offset: Offset(
+                                  2.0, 2.0), // shadow direction: bottom right
+                            )
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Center(
+                              child: Text('Sign Up',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color:Colors.red,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Montserrat')),
+                            )
+                          ],
                         ),
                       ),
                     ),
                   ),
+
+
+
                   SizedBox(
                     height: 20,
                   ),

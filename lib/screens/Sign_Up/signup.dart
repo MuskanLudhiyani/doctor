@@ -1,10 +1,7 @@
 import 'package:doctor/screens/landingpage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'database.dart';
-import 'dart:convert';
+import 'package:doctor/database.dart';
 
 class signup extends StatefulWidget {
   @override

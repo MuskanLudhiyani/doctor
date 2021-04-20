@@ -1,18 +1,16 @@
 import 'package:doctor/authentication.dart';
-import 'package:doctor/landingpage.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
-import 'signindocscreen.dart';
-import 'landingpage.dart';
+import 'signin2.dart';
+import 'package:doctor/screens/landingpage.dart';
 
-class Signind extends StatefulWidget {
+class signin extends StatefulWidget {
   @override
-  _SignindState createState() => _SignindState();
+  _signinState createState() => _signinState();
 }
 
-class _SignindState extends State<Signind> {
+class _signinState extends State<signin> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(providers: [
@@ -34,7 +32,7 @@ class AuthenticationWrapper extends StatelessWidget {
       print('signed in');
       return landingpage();
     } else {
-      return signindocscreen();
+      return signin2screen();
     }
   }
 }

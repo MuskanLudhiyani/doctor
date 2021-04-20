@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'screens/signindoctor.dart';
-import 'signinpatient.dart';
-import 'authentication.dart';
-import 'signup.dart';
+import 'screens/Sign_In/signin.dart';
+import 'screens/Sign_Up/signup.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -107,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Signind()),
+                            MaterialPageRoute(builder: (context) => (signin())),
                           );
                         })
                   ],
@@ -162,38 +159,50 @@ class _MyHomePageState extends State<MyHomePage> {
             //     ),
             //   ),
             // ),
-
-            SizedBox(height: 10),
-
+            SizedBox(height: 0),
             Padding(
-              padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Not Registered?",
-                      style: TextStyle(
-                        color: Colors.black,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => signup()));
-                      },
-                      child: Text(
-                        "Sign Up",
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.red,
-                        ),
-                      ),
+              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: Container(
+                height: 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                      color: Colors.white,
+                      style: BorderStyle.solid,
+                      width: 1.0),
+                  color: Colors.transparent,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0xffF0EFFE),
+                      blurRadius: 2.0,
+                      spreadRadius: 0.0,
+                      offset:
+                          Offset(2.0, 2.0), // shadow direction: bottom right
                     )
                   ],
                 ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    GestureDetector(
+                        child: Center(
+                          child: Text('Sign Up',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Color(0xff9994FA),
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Montserrat')),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => (signup())),
+                          );
+                        })
+                  ],
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),

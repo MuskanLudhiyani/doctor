@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import '../authentication.dart';
+import 'package:doctor/authentication.dart';
 import 'package:provider/provider.dart';
 
-class signindocscreen extends StatefulWidget {
+class signin2screen extends StatefulWidget {
   @override
-  _signindocscreenState createState() => _signindocscreenState();
+  _signin2screenState createState() => _signin2screenState();
 }
 
-class _signindocscreenState extends State<signindocscreen> {
+class _signin2screenState extends State<signin2screen> {
   TextEditingController username = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();

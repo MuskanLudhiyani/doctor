@@ -1,8 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'landingpagedoctor.dart';
 import 'package:flutter/material.dart';
-import 'package:doctor/screens/addpatient.dart';
-import 'package:doctor/screens/appointments.dart';
-import 'package:doctor/screens/searchpatients.dart';
-import 'package:doctor/screens/settings.dart';
+import 'package:doctor/database.dart';
+import 'landingpagepatient.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class landingpage extends StatefulWidget {
   @override
@@ -10,75 +11,18 @@ class landingpage extends StatefulWidget {
 }
 
 class _landingpageState extends State<landingpage> {
-  int _selectedpage = 0;
-  final pageoptions = [appointments(), addpatient(), searchp(), settingsd()];
+  final _uid = FirebaseAuth.instance.currentUser.uid;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('DocOn 12'),
-        backgroundColor: Colors.black,
-      ),
-      body: pageoptions[_selectedpage],
-      bottomNavigationBar: Container(
-        child: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.people,
-                  color: Colors.black54,
-                ),
-                title: Text(
-                  'Appointments',
-                  style: TextStyle(
-                    fontFamily: 'sans',
-                  ),
-                )),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.add,
-                  color: Colors.black54,
-                ),
-                title: Text(
-                  'Add Patients',
-                  style: TextStyle(
-                    fontFamily: 'sans',
-                  ),
-                )),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.search,
-                  color: Colors.black54,
-                ),
-                title: Text(
-                  'Search Patients',
-                  style: TextStyle(
-                    fontFamily: 'sans',
-                  ),
-                )),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.settings,
-                  color: Colors.black54,
-                ),
-                title: Text(
-                  'Settings',
-                  style: TextStyle(
-                    fontFamily: 'sans',
-                  ),
-                ))
-          ],
-          currentIndex: _selectedpage,
-          selectedItemColor: Colors.red,
-          onTap: (int index) {
-            setState(() {
-              _selectedpage = index;
-            });
-          },
-          backgroundColor: Colors.black,
-          iconSize: 25,
-        ),
-      ),
-    );
+    if (DatabaseService(uid: _uid).checkIfDoctor() == true) {
+      Fluttertoast.showToast(msg: 'Taking you to Doctor\'s dashboard');
+      print(_uid);
+      return landingpagedoctor();
+    }
+    if (DatabaseService(uid: _uid).checkIfDoctor() == true) {
+      Fluttertoast.showToast(msg: 'Taking you to Patient\'s dashboard');
+      print(_uid);
+      return landingpagepatient();
+    }
   }
 }

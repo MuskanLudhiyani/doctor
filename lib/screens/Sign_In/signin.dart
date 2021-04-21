@@ -1,6 +1,7 @@
 import 'package:doctor/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'signin2.dart';
 import 'package:doctor/screens/landingpage.dart';
@@ -29,7 +30,7 @@ class AuthenticationWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
     if (firebaseUser != null) {
-      print('signed in');
+      Fluttertoast.showToast(msg: 'Already Logged In');
       return landingpage();
     } else {
       return signin2screen();

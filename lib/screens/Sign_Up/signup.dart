@@ -44,7 +44,10 @@ class signup extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Text("Or"),
+              Text("Or",
+              style: TextStyle(
+                fontWeight: FontWeight.bold
+              ),),
 
 
               SizedBox(

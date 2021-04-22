@@ -49,7 +49,7 @@ class DatabaseService {
   }
 
   Future<bool> checkIfDoctor() async {
-    return await patients
+    return await doctors
         .doc(uid)
         .get()
         .then((DocumentSnapshot documentSnapshot) {
@@ -62,7 +62,7 @@ class DatabaseService {
   }
 
   Future<bool> checkIfPatient() async{
-    return await doctors
+    return await patients
         .doc(uid)
         .get()
         .then((DocumentSnapshot documentSnapshot) {

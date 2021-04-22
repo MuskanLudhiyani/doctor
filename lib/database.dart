@@ -47,4 +47,30 @@ class DatabaseService {
         .then((value) => print("User added successfully"))
         .catchError((error) => print("Failed to add user: $error"));
   }
+
+  Future<bool> checkIfDoctor() async {
+    return await patients
+        .doc(uid)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
+
+  Future<bool> checkIfPatient() async{
+    return await doctors
+        .doc(uid)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
 }

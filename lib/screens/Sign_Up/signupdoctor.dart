@@ -1,7 +1,9 @@
-import 'package:doctor/screens/landingpage.dart';
+import 'package:doctor/screens/landingpagedoctor.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:doctor/database.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class signupdoctor extends StatefulWidget {
   @override
@@ -330,8 +332,6 @@ class _signupdoctorState extends State<signupdoctor> {
                       ),
                       child: ElevatedButton(
                         onPressed: () async {
-                          // print(email);
-                          // print(password);
                           try {
                             final newuser =
                                 await _auth.createUserWithEmailAndPassword(
@@ -349,9 +349,10 @@ class _signupdoctorState extends State<signupdoctor> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => landingpage()));
+                                      builder: (context) => (landingpagedoctor())));
                             }
-                          } catch (e) {
+                          } on FirebaseException catch (e) {
+                            Fluttertoast.showToast(msg: e.message);
                             print(e);
                           }
                         },

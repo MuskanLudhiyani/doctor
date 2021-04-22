@@ -41,6 +41,10 @@ class signup extends StatelessWidget {
                     );
                   }
               ),
+              SizedBox(
+                height: 10,
+              ),
+              Text("Or"),
 
 
               SizedBox(
@@ -53,7 +57,7 @@ class signup extends StatelessWidget {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                           image: NetworkImage(
-                              "https://image.freepik.com/free-vector/sad-cute-kid-girl-cough-use-masker_97632-1577.jpg"),
+                              "https://png.pngtree.com/png-clipart/20190628/original/pngtree-cute-cartoon-little-boy-medical-patient-in-wheelchair-png-image_4047851.jpg"),
                           fit: BoxFit.fill,
                         ),
                       ),

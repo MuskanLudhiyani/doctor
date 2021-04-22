@@ -48,27 +48,28 @@ class DatabaseService {
         .catchError((error) => print("Failed to add user: $error"));
   }
 
-  Future<bool> checkIfDoctor() async {
-    return await doctors
-        .doc(uid)
-        .get()
-        .then((DocumentSnapshot documentSnapshot) {
+  Future<bool> checkIfDoctor() {
+    return doctors.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
+        print("doctor true");
         return true;
       } else {
+        print("doctor false");
         return false;
       }
     });
   }
 
-  Future<bool> checkIfPatient() async{
+  Future<bool> checkIfPatient() async {
     return await patients
         .doc(uid)
         .get()
         .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
+        print("patient true");
         return true;
       } else {
+        print("patient false");
         return false;
       }
     });

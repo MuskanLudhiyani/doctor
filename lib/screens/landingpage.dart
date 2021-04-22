@@ -14,18 +14,23 @@ class _landingpageState extends State<landingpage> {
   final _uid = FirebaseAuth.instance.currentUser.uid;
 
   Widget landingpagewidget() {
-    return FutureBuilder(builder: (context, landingpagewidget) {
-      if (DatabaseService(uid: _uid).checkIfDoctor() == true) {
-        Fluttertoast.showToast(msg: 'Taking you to Doctor\'s dashboard');
-        print(_uid);
-        return landingpagedoctor();
-      }
-      if (DatabaseService(uid: _uid).checkIfPatient() == true) {
-        Fluttertoast.showToast(msg: 'Taking you to Patient\'s dashboard');
-        print(_uid);
-        return landingpagepatient();
-      }
-    });
+    return FutureBuilder(
+        future: DatabaseService(uid: _uid).checkIfDoctor(),
+        builder: (context, AsyncSnapshot snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            print(snapshot.data);
+            if (snapshot.data) {
+              Fluttertoast.showToast(msg: 'Taking you to Doctor\'s dashboard');
+              return landingpagedoctor();
+            } else {
+              Fluttertoast.showToast(msg: 'Taking you to Patient\'s dashboard');
+              print(_uid);
+              return landingpagepatient();
+            }
+          } else {
+            return Container(child: Center(child: CircularProgressIndicator()));
+          }
+        });
   }
 
   @override

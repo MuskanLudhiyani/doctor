@@ -12,28 +12,24 @@ class landingpage extends StatefulWidget {
 
 class _landingpageState extends State<landingpage> {
   final _uid = FirebaseAuth.instance.currentUser.uid;
-  @override
 
-
-  Widget build(BuildContext context) async {
-
-
-    if (await DatabaseService(uid: _uid).checkIfDoctor() == true) {
-      Fluttertoast.showToast(msg: 'Taking you to Doctor\'s dashboard');
-      print(_uid);
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => (landingpagedoctor())),
-      );
-
-    }
-    if (await DatabaseService(uid: _uid).checkIfDoctor() == true) {
-      Fluttertoast.showToast(msg: 'Taking you to Patient\'s dashboard');
-      print(_uid);
-      return landingpagepatient();
-    }
+  Widget landingpagewidget() {
+    return FutureBuilder(builder: (context, landingpagewidget) {
+      if (DatabaseService(uid: _uid).checkIfDoctor() == true) {
+        Fluttertoast.showToast(msg: 'Taking you to Doctor\'s dashboard');
+        print(_uid);
+        return landingpagedoctor();
+      }
+      if (DatabaseService(uid: _uid).checkIfPatient() == true) {
+        Fluttertoast.showToast(msg: 'Taking you to Patient\'s dashboard');
+        print(_uid);
+        return landingpagepatient();
+      }
+    });
   }
 
-
-
+  @override
+  Widget build(BuildContext context) {
+    return landingpagewidget();
+  }
 }

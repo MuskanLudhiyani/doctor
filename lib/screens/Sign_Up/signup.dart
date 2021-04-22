@@ -46,7 +46,8 @@ class signup extends StatelessWidget {
               ),
               Text("Or",
               style: TextStyle(
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold,
+                fontSize: 12
               ),),
 
 

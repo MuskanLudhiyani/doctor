@@ -41,7 +41,7 @@ class _signin2screenState extends State<signin2screen> {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                           image: NetworkImage(
-                              "https://i.pinimg.com/originals/cf/4e/c0/cf4ec0f1cd566491fe962ed9d2f68d67.jpg"),
+                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-vlGCMM_L_kr6c7zS7JIkAjBwuMlfDz3UXg&usqp=CAU"),
                           fit: BoxFit.fill,
                         ),
                       ),

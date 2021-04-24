@@ -39,17 +39,10 @@ class _appointmentsState extends State<appointments> {
                   children: [
                     Container(
                         margin: EdgeInsets.all(10),
-                        child: Text(
-                           "Name: ${data[index]["name"]}"
-                        )
-                    ),
+                        child: Text("Name: ${data[index]["name"]}")),
                     Container(
                         margin: EdgeInsets.all(10),
-                        child: Text(
-                            "Date: ${data[index]["date"]}"
-
-                        )
-                    ),
+                        child: Text("Date: ${data[index]["date"]}")),
                   ],
                 ),
                 SizedBox(

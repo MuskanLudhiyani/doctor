@@ -5,7 +5,6 @@ class authentication {
   final FirebaseAuth _firebaseAuth;
   authentication(this._firebaseAuth);
 
-
   Stream<User> get authStateChanges => _firebaseAuth.authStateChanges();
 
   Future<String> signIn({String email, String pass}) async {
@@ -19,15 +18,13 @@ class authentication {
       return e.message;
     }
   }
-  Future signOut () async{
-    try{
-      return await _firebaseAuth.signOut();
 
-    }
-    catch(e){
+  Future signOut() async {
+    try {
+      return await _firebaseAuth.signOut();
+    } catch (e) {
       print(e.toString());
       return null;
-
     }
   }
 }

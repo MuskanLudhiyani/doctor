@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:doctor/database.dart';
 import 'package:doctor/authentication.dart';
 import 'package:provider/provider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:doctor/models/appointment.dart';
 
 class appointments extends StatefulWidget {
   @override
@@ -12,12 +12,23 @@ class appointments extends StatefulWidget {
 class _appointmentsState extends State<appointments> {
   @override
   Widget build(BuildContext context) {
-    final appoints = Provider.of<QuerySnapshot>(context);
-    print(appoints.docs);
-    return StreamProvider<QuerySnapshot>.value(
+    return StreamProvider<List<appointment>>.value(
       value: DatabaseService().appoints,
       initialData: null,
-      child: Container(),
+      builder: (context, appointments) {
+        return appointlist(context);
+      },
     );
+  }
+
+  Widget appointlist(BuildContext context) {
+    final appoints = Provider.of<List<appointment>>(context);
+    appoints.forEach((appointment) {
+      print(appointment.date);
+      print(appointment.doctor);
+      print(appointment.patient);
+      print(appointment.time);
+    });
+    return Container();
   }
 }

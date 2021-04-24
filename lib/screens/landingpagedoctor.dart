@@ -21,6 +21,7 @@ class _landingpagedoctorState extends State<landingpagedoctor> {
       appBar: AppBar(
         title: Text('DocOn 12'),
         backgroundColor: Colors.black,
+
       ),
       body: pageoptions[_selectedpage],
       bottomNavigationBar: Container(

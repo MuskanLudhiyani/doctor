@@ -28,7 +28,7 @@ class _appointmentsState extends State<appointments> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xffEFF0F5),
       body: ListView.builder(
         itemCount: data == null ? 0 : data.length,
         itemBuilder: (BuildContext context, int index) {
@@ -39,10 +39,17 @@ class _appointmentsState extends State<appointments> {
                   children: [
                     Container(
                         margin: EdgeInsets.all(10),
-                        child: Text(data[index]["name"])),
+                        child: Text(
+                           "Name: ${data[index]["name"]}"
+                        )
+                    ),
                     Container(
                         margin: EdgeInsets.all(10),
-                        child: Text(data[index]["date"])),
+                        child: Text(
+                            "Date: ${data[index]["date"]}"
+
+                        )
+                    ),
                   ],
                 ),
                 SizedBox(

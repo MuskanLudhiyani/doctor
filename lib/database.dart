@@ -1,4 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:doctor/models/appointment.dart';
+import 'package:doctor/models/patient.dart';
+import 'package:flutter/cupertino.dart';
 
 class DatabaseService {
   final String uid;
@@ -77,7 +80,28 @@ class DatabaseService {
     });
   }
 
-  Stream<QuerySnapshot> get appoints {
-    return appointments.snapshots();
+  Stream<List<appointment>> get appoints {
+    return appointments.snapshots().map(appointmentListFromSnapshot);
+  }
+
+  List<appointment> appointmentListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.docs.map((doc) {
+      return appointment(
+          date: doc.data()['date'] ?? '',
+          doctor: doc.data()['doctor'] ?? '',
+          patient: doc.data()['patient'] ?? '',
+          time: doc.data()['time'] ?? '');
+    }).toList();
+  }
+
+  List<patient> patientListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.docs.map((doc) {
+      return patient(
+          name: doc.data()['name'] ?? '',
+          gender: doc.data()['gender'] ?? '',
+          bloodGroup: doc.data()['bloodGroup'] ?? '',
+          phoneNumber: doc.data()['phoneNumber'] ?? '',
+          age: doc.data()['age'] ?? 0);
+    }).toList();
   }
 }

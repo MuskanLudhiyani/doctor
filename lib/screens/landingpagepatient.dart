@@ -1,8 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:doctor/screens/Patients/appointments.dart';
+import 'package:doctor/screens/Patients/makeappointment.dart';
 import 'package:doctor/screens/Patients/searchdoctors.dart';
 import 'package:doctor/screens/Patients/settings.dart';
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class landingpagepatient extends StatefulWidget {
   @override
@@ -11,15 +12,20 @@ class landingpagepatient extends StatefulWidget {
 
 class _landingpagepatientState extends State<landingpagepatient> {
   final uid = FirebaseAuth.instance.currentUser.uid;
+
   int _selectedpage = 0;
-  final pageoptions = [appointmentp(), searchdoctors(),  patientsettings()];
+  final pageoptions = [
+    appointments(),
+    makeappointments(),
+    searchd(),
+    settingsp()
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('DocOn 12'),
         backgroundColor: Colors.black,
-
       ),
       body: pageoptions[_selectedpage],
       bottomNavigationBar: Container(

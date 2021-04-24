@@ -7,6 +7,8 @@ class DatabaseService {
       FirebaseFirestore.instance.collection('patients');
   final CollectionReference doctors =
       FirebaseFirestore.instance.collection('doctors');
+  final CollectionReference appointments =
+      FirebaseFirestore.instance.collection('appointments');
 
   Future updatePatientData(
     String name,
@@ -73,5 +75,9 @@ class DatabaseService {
         return false;
       }
     });
+  }
+
+  Stream<QuerySnapshot> get appoints {
+    return appointments.snapshots();
   }
 }

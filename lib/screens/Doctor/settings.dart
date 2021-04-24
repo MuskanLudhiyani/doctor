@@ -9,15 +9,14 @@ class settingsd extends StatefulWidget {
 }
 
 class _settingsdState extends State<settingsd> {
-  final authentication auth=authentication(FirebaseAuth.instance);
+  final authentication auth = authentication(FirebaseAuth.instance);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: GestureDetector(
-        onTap: ()async {
+        onTap: () async {
           await auth.signOut();
-
         },
         child: Padding(
           padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -26,17 +25,14 @@ class _settingsdState extends State<settingsd> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
-                  color: Colors.white,
-                  style: BorderStyle.solid,
-                  width: 1.0),
+                  color: Colors.white, style: BorderStyle.solid, width: 1.0),
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
                   color: Color(0xffF0EFFE),
                   blurRadius: 2.0,
                   spreadRadius: 0.0,
-                  offset: Offset(
-                      2.0, 2.0), // shadow direction: bottom right
+                  offset: Offset(2.0, 2.0), // shadow direction: bottom right
                 )
               ],
             ),
@@ -47,7 +43,7 @@ class _settingsdState extends State<settingsd> {
                   child: Text('Sign Out',
                       style: TextStyle(
                           fontSize: 20,
-                          color:Color(0xff4C3C88),
+                          color: Color(0xff4C3C88),
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Montserrat')),
                 )

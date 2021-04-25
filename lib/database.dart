@@ -92,7 +92,8 @@ class DatabaseService {
           doctor: doc.data()['doctor'] ?? '',
           patient: doc.data()['patient'] ?? '',
           pname: doc.data()['pname'] ?? '',
-          time: doc.data()['time'] ?? '');
+          time: doc.data()['time'] ?? '',
+          approved: doc.data()['approved'] ?? -1);
     }).toList();
   }
 

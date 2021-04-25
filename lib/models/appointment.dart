@@ -5,6 +5,7 @@ class appointment {
   final String time;
   final String dname;
   final String pname;
+  final int approved;
 
   appointment({
     this.date,
@@ -13,5 +14,6 @@ class appointment {
     this.time,
     this.dname,
     this.pname,
+    this.approved
   });
 }

@@ -94,6 +94,10 @@ class DatabaseService {
     }).toList();
   }
 
+  Stream<List<patient>> get patientlist {
+    return patients.snapshots().map(patientListFromSnapshot);
+  }
+
   List<patient> patientListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return patient(

@@ -29,6 +29,47 @@ class _appointmentsState extends State<appointments> {
       print(appointment.patient);
       print(appointment.time);
     });
-    return Container();
+    return Scaffold(
+      backgroundColor: Color(0xffEFF0F5),
+
+      body :ListView.builder(
+        itemCount: appoints.length,
+          itemBuilder: (context,index){
+          return Padding(
+            padding: EdgeInsets.only(top: 8),
+            child: Card(
+              margin: EdgeInsets.fromLTRB(20,6,20,0),
+              child: ListTile(
+                tileColor: Colors.white,
+                leading: Text("Dr.  ${appoints[index].doctor}",
+                  style: TextStyle(
+                  fontSize: 20,fontWeight: FontWeight.bold,
+                  fontFamily: "calibre",
+                  color: Color(0xff4C3C88),
+                ),),
+                title: Text("Date : ${appoints[index].date}",
+                  style: TextStyle(
+                  fontSize: 20,fontWeight: FontWeight.bold,
+                  fontFamily: "calibre",
+                  color: Colors.red,
+                ),),
+                subtitle:Text("Time : ${appoints[index].time}",
+                    style: TextStyle(
+                      fontSize: 20,fontWeight: FontWeight.bold,
+                      fontFamily: "calibre",
+                      color: Colors.black,
+                    ),
+                  
+                ),
+
+              ),
+
+            ),
+
+          );
+
+          }
+      ),
+    );
   }
 }

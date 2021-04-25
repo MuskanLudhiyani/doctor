@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
-class makeappointments extends StatefulWidget {
+class DoctorsInfo extends StatefulWidget {
   @override
-  _makeappointmentsState createState() => _makeappointmentsState();
+  _DoctorsInfoState createState() => _DoctorsInfoState();
 }
 
-class _makeappointmentsState extends State<makeappointments> {
+class _DoctorsInfoState extends State<DoctorsInfo> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+
+    );
   }
 }
+

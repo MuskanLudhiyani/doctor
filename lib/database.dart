@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor/models/appointment.dart';
+import 'package:doctor/models/doctor.dart';
 import 'package:doctor/models/patient.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -33,13 +34,18 @@ class DatabaseService {
         .catchError((error) => print("Failed to add user: $error"));
   }
 
+
+
   Future updateDoctorData(
+
     String name,
     String gender,
     String phoneNumber,
     String address,
     String speciality,
+
   ) async {
+    List<String>s=[];
     return await doctors
         .doc(uid)
         .set({
@@ -47,11 +53,16 @@ class DatabaseService {
           'gender': gender,
           'phoneNumber': phoneNumber,
           'address': address,
-          'speciality': speciality
+          'speciality': speciality,
+          'patients':s,
+
+
         })
         .then((value) => print("User added successfully"))
         .catchError((error) => print("Failed to add user: $error"));
   }
+
+
 
   Future<bool> checkIfDoctor() {
     return doctors.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
@@ -111,4 +122,19 @@ class DatabaseService {
           age: doc.data()['age'] ?? 0);
     }).toList();
   }
+  Stream<List<doctor>> get doctorlist {
+    return doctors.snapshots().map(doctorListFromSnapshot);
+  }
+
+  List<doctor> doctorListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.docs.map((doc) {
+      return doctor(
+          name: doc.data()['name'] ?? '',
+          gender: doc.data()['gender'] ?? '',
+          speciality: doc.data()['speciality'] ?? '',
+          phoneNumber: doc.data()['phoneNumber'] ?? '',
+          address: doc.data()['address'] ??'');
+    }).toList();
+  }
+
 }

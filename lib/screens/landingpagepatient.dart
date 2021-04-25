@@ -16,7 +16,7 @@ class _landingpagepatientState extends State<landingpagepatient> {
   int _selectedpage = 0;
   final pageoptions = [
     appointments(),
-    makeappointments(),
+    DoctorsInfo(),
     searchd(),
     settingsp()
   ];
@@ -48,7 +48,7 @@ class _landingpagepatientState extends State<landingpagepatient> {
                   color: Colors.black54,
                 ),
                 title: Text(
-                  'Add Patients',
+                  'Add Doctor',
                   style: TextStyle(
                     fontFamily: 'sans',
                   ),
@@ -59,7 +59,7 @@ class _landingpagepatientState extends State<landingpagepatient> {
                   color: Colors.black54,
                 ),
                 title: Text(
-                  'Search Patients',
+                  'Search Doctors',
                   style: TextStyle(
                     fontFamily: 'sans',
                   ),

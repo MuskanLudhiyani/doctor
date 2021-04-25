@@ -35,6 +35,7 @@ dependencies:
   cloud_firestore: ^1.0.4
   firebase_database: ^6.1.2
   http: ^0.13.1
+  autocomplete_textfield:
 
 dev_dependencies:
   flutter_test:

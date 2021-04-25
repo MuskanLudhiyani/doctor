@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor/database.dart';
 import 'package:doctor/authentication.dart';
@@ -14,67 +15,42 @@ class _appointmentsState extends State<appointments> {
   Widget build(BuildContext context) {
     return StreamProvider<List<appointment>>.value(
       value: DatabaseService().appoints,
-      initialData: null,
+      initialData: [],
       builder: (context, appointments) {
-        // if (appoints != null) {
-        //   return appointlist(context);
-        // } else {
-        //   return Center(child: CircularProgressIndicator());
-        // }
         return appointlist(context);
       },
     );
   }
 
   Widget appointlist(BuildContext context) {
+    final String _uid = FirebaseAuth.instance.currentUser.uid;
     final appoints = Provider.of<List<appointment>>(context);
-    appoints.forEach((appointment) {
-      print(appointment.date);
-      print(appointment.doctor);
-      print(appointment.patient);
-      print(appointment.time);
-    });
+    if (appoints.isEmpty || appoints == null) {
+      return CircularProgressIndicator();
+    }
     return Scaffold(
       backgroundColor: Color(0xffEFF0F5),
       body: ListView.builder(
           itemCount: appoints.length,
           itemBuilder: (context, index) {
-            return Padding(
-              padding: EdgeInsets.only(top: 8),
-              child: Card(
-                margin: EdgeInsets.fromLTRB(20, 6, 20, 0),
-                child: ListTile(
-                  tileColor: Colors.white,
-                  leading: Text(
-                    "Dr.  ${appoints[index].doctor}",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "calibre",
-                      color: Color(0xff4C3C88),
+            if (appoints[index].patient == _uid) {
+              return Padding(
+                  padding: EdgeInsets.only(top: 8),
+                  child: Container(
+                    color: Colors.blue[50],
+                    child: Column(
+                      children: [
+                        Text(appoints[index].dname),
+                        Text(appoints[index].time),
+                        Text(appoints[index].date),
+                      ],
                     ),
-                  ),
-                  title: Text(
-                    "Date : ${appoints[index].date}",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "calibre",
-                      color: Colors.red,
-                    ),
-                  ),
-                  subtitle: Text(
-                    "Time : ${appoints[index].time}",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "calibre",
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
-            );
+                  ));
+            } else {
+              return SizedBox(
+                height: 0,
+              );
+            }
           }),
     );
   }

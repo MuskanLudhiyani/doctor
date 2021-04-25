@@ -88,8 +88,10 @@ class DatabaseService {
     return snapshot.docs.map((doc) {
       return appointment(
           date: doc.data()['date'] ?? '',
+          dname: doc.data()['dname'] ?? '',
           doctor: doc.data()['doctor'] ?? '',
           patient: doc.data()['patient'] ?? '',
+          pname: doc.data()['pname'] ?? '',
           time: doc.data()['time'] ?? '');
     }).toList();
   }

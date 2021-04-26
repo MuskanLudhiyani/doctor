@@ -71,7 +71,7 @@ class DatabaseService {
           'dname': dname,
           'pname': pname,
           'doctor': duid,
-          'patient': pname,
+          'patient': puid,
           'date': date,
           'time': time,
           'approved': approved,

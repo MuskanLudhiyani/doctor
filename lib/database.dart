@@ -34,18 +34,14 @@ class DatabaseService {
         .catchError((error) => print("Failed to add user: $error"));
   }
 
-
-
   Future updateDoctorData(
-
     String name,
     String gender,
     String phoneNumber,
     String address,
     String speciality,
-
   ) async {
-    List<String>s=[];
+    List<String> s = [];
     return await doctors
         .doc(uid)
         .set({
@@ -54,15 +50,35 @@ class DatabaseService {
           'phoneNumber': phoneNumber,
           'address': address,
           'speciality': speciality,
-          'patients':s,
-
-
+          'patients': s,
         })
         .then((value) => print("User added successfully"))
         .catchError((error) => print("Failed to add user: $error"));
   }
 
-
+  Future updateAppointmentData(
+    String dname,
+    String pname,
+    String duid,
+    String puid,
+    String date,
+    String time,
+    int approved,
+  ) async {
+    return await appointments
+        .doc(uid)
+        .set({
+          'dname': dname,
+          'pname': pname,
+          'doctor': duid,
+          'patient': pname,
+          'date': date,
+          'time': time,
+          'approved': approved,
+        })
+        .then((value) => print("User added successfully"))
+        .catchError((error) => print("Failed to add user: $error"));
+  }
 
   Future<bool> checkIfDoctor() {
     return doctors.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
@@ -122,6 +138,7 @@ class DatabaseService {
           age: doc.data()['age'] ?? 0);
     }).toList();
   }
+
   Stream<List<doctor>> get doctorlist {
     return doctors.snapshots().map(doctorListFromSnapshot);
   }
@@ -133,8 +150,7 @@ class DatabaseService {
           gender: doc.data()['gender'] ?? '',
           speciality: doc.data()['speciality'] ?? '',
           phoneNumber: doc.data()['phoneNumber'] ?? '',
-          address: doc.data()['address'] ??'');
+          address: doc.data()['address'] ?? '');
     }).toList();
   }
-
 }

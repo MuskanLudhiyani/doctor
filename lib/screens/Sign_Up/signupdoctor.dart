@@ -31,14 +31,18 @@ class _signupdoctorState extends State<signupdoctor> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Text('Doctor',
                         style: TextStyle(
                             fontSize: 30,
-                            color:Colors.red,
+                            color: Colors.red,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Montserrat')),
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Center(
                       child: Container(
                           decoration: BoxDecoration(
@@ -46,12 +50,8 @@ class _signupdoctorState extends State<signupdoctor> {
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
                                   colors: [Color(0xff4C3C88), Colors.red]),
-                              borderRadius: BorderRadius.all(Radius.circular(10))
-
-
-
-
-                          ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
                           child: Column(
                             // crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -81,12 +81,13 @@ class _signupdoctorState extends State<signupdoctor> {
                                               ),
                                             ),
                                           ),
-                                          contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 15),
+                                          contentPadding: EdgeInsets.symmetric(
+                                              horizontal: 15),
                                           fillColor: Color(0xffFFFFFF),
                                           border: OutlineInputBorder(
                                             borderSide: BorderSide.none,
-                                            borderRadius: const BorderRadius.all(
+                                            borderRadius:
+                                                const BorderRadius.all(
                                               const Radius.circular(10.0),
                                             ),
                                           ))),
@@ -116,12 +117,13 @@ class _signupdoctorState extends State<signupdoctor> {
                                               ),
                                             ),
                                           ),
-                                          contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 15),
+                                          contentPadding: EdgeInsets.symmetric(
+                                              horizontal: 15),
                                           fillColor: Color(0xffFFFFFF),
                                           border: OutlineInputBorder(
                                             borderSide: BorderSide.none,
-                                            borderRadius: const BorderRadius.all(
+                                            borderRadius:
+                                                const BorderRadius.all(
                                               const Radius.circular(10.0),
                                             ),
                                           ))),
@@ -151,12 +153,13 @@ class _signupdoctorState extends State<signupdoctor> {
                                               ),
                                             ),
                                           ),
-                                          contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 15),
+                                          contentPadding: EdgeInsets.symmetric(
+                                              horizontal: 15),
                                           fillColor: Color(0xffFFFFFF),
                                           border: OutlineInputBorder(
                                             borderSide: BorderSide.none,
-                                            borderRadius: const BorderRadius.all(
+                                            borderRadius:
+                                                const BorderRadius.all(
                                               const Radius.circular(10.0),
                                             ),
                                           ))),
@@ -186,12 +189,13 @@ class _signupdoctorState extends State<signupdoctor> {
                                               ),
                                             ),
                                           ),
-                                          contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 15),
+                                          contentPadding: EdgeInsets.symmetric(
+                                              horizontal: 15),
                                           fillColor: Color(0xffFFFFFF),
                                           border: OutlineInputBorder(
                                             borderSide: BorderSide.none,
-                                            borderRadius: const BorderRadius.all(
+                                            borderRadius:
+                                                const BorderRadius.all(
                                               const Radius.circular(10.0),
                                             ),
                                           ))),
@@ -209,21 +213,22 @@ class _signupdoctorState extends State<signupdoctor> {
                                     color: Colors.white,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                    padding:
+                                        const EdgeInsets.fromLTRB(20, 0, 20, 0),
                                     child: DropdownButton<String>(
                                       isExpanded: true,
-
                                       dropdownColor: Colors.white,
                                       value: _gender,
-
                                       style: TextStyle(color: Colors.white),
                                       items: <String>["M", "F"]
-                                          .map<DropdownMenuItem<String>>((String value) {
+                                          .map<DropdownMenuItem<String>>(
+                                              (String value) {
                                         return DropdownMenuItem<String>(
                                           value: value,
                                           child: Text(
                                             value,
-                                            style: TextStyle(color: Colors.black54),
+                                            style: TextStyle(
+                                                color: Colors.black54),
                                           ),
                                         );
                                       }).toList(),
@@ -270,12 +275,13 @@ class _signupdoctorState extends State<signupdoctor> {
                                               ),
                                             ),
                                           ),
-                                          contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 15),
+                                          contentPadding: EdgeInsets.symmetric(
+                                              horizontal: 15),
                                           fillColor: Color(0xffFFFFFF),
                                           border: OutlineInputBorder(
                                             borderSide: BorderSide.none,
-                                            borderRadius: const BorderRadius.all(
+                                            borderRadius:
+                                                const BorderRadius.all(
                                               const Radius.circular(10.0),
                                             ),
                                           ))),
@@ -300,13 +306,14 @@ class _signupdoctorState extends State<signupdoctor> {
                                       cursorColor: Color(0xff90E5BF),
                                       decoration: InputDecoration(
                                           filled: true,
-                                          contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 15),
+                                          contentPadding: EdgeInsets.symmetric(
+                                              horizontal: 15),
                                           hintText: "Password",
                                           fillColor: Color(0xffFFFFFF),
                                           border: OutlineInputBorder(
                                             borderSide: BorderSide.none,
-                                            borderRadius: const BorderRadius.all(
+                                            borderRadius:
+                                                const BorderRadius.all(
                                               const Radius.circular(10.0),
                                             ),
                                           ))),
@@ -345,23 +352,24 @@ class _signupdoctorState extends State<signupdoctor> {
                               GestureDetector(
                                 onTap: () async {
                                   try {
-                                    final newuser =
-                                    await _auth.createUserWithEmailAndPassword(
-                                        email: email, password: password);
+                                    final newuser = await _auth
+                                        .createUserWithEmailAndPassword(
+                                            email: email, password: password);
                                     newuser.user.sendEmailVerification();
                                     await DatabaseService(uid: newuser.user.uid)
                                         .updateDoctorData(
-                                        name.text,
-                                        _gender,
-                                        phoneNumber.text,
-                                        address.text,
-                                        speciality.text);
+                                            name.text,
+                                            _gender,
+                                            phoneNumber.text,
+                                            address.text,
+                                            speciality.text);
 
                                     if (newuser != Null) {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => (landingpagedoctor())));
+                                              builder: (context) =>
+                                                  (landingpagedoctor())));
                                     }
                                   } on FirebaseException catch (e) {
                                     Fluttertoast.showToast(msg: e.message);
@@ -384,19 +392,20 @@ class _signupdoctorState extends State<signupdoctor> {
                                           color: Color(0xffF0EFFE),
                                           blurRadius: 2.0,
                                           spreadRadius: 0.0,
-                                          offset: Offset(
-                                              2.0, 2.0), // shadow direction: bottom right
+                                          offset: Offset(2.0,
+                                              2.0), // shadow direction: bottom right
                                         )
                                       ],
                                     ),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: <Widget>[
                                         Center(
                                           child: Text('Sign Up',
                                               style: TextStyle(
                                                   fontSize: 20,
-                                                  color:Color(0xff4C3C88),
+                                                  color: Color(0xff4C3C88),
                                                   fontWeight: FontWeight.bold,
                                                   fontFamily: 'Montserrat')),
                                         )

@@ -9,7 +9,6 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
     );
   }
 }

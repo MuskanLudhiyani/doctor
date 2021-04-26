@@ -34,33 +34,124 @@ class _searchpState extends State<searchp> {
       return  new Scaffold(
 
         body: Container(
+
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+                color: Colors.white,
+                style: BorderStyle.solid,
+                width: 1.0),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Color(0xffF0EFFE),
+                blurRadius: 2.0,
+                spreadRadius: 0.0,
+                offset: Offset(
+                    2.0, 2.0), // shadow direction: bottom right
+              )
+            ],
+          ),
           child: Column(
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  onChanged: (value) {
-                    setState(() {});
-                  },
-                  controller: controller,
-                  decoration: InputDecoration(
-                      labelText: "Search",
-                      hintText: "Search",
-                      prefixIcon: Icon(Icons.search),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(25.0)))),
+              Theme(
+                data: ThemeData(
+                  primaryColor: Color(0xffFFFFFF),
+                  primaryColorDark: Color(0xffFFFFFF),
                 ),
+                  child: TextField(
+
+                      textAlign: TextAlign.center,
+                      onChanged: (value) {
+                        setState(() {});
+                      },
+                      controller: controller,
+                    cursorColor: Color(0xff90E5BF),
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search),
+                        filled: true,
+                        hintText: "Search",
+                        contentPadding: EdgeInsets.zero,
+                        hintStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red,
+                        ),
+                        suffixIcon: GestureDetector(
+                          child: Text(
+                            "",
+                            style: TextStyle(
+                              color: Color(0xff90E5BF),
+                            ),
+                          ),
+                        ),
+
+                        fillColor: Color(0xffFFFFFF),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: const BorderRadius.all(
+                            const Radius.circular(10.0),
+                          ),
+                        ))),
               ),
+
               Expanded(
                 child: ListView.builder(
                     shrinkWrap: true,
                     itemCount: appoints.length,
                     itemBuilder: (context, index) {
                       if (controller.text.isEmpty) {
-                        return ListTile(
-                          title:
-                          Text('${appoints[index].name} '),
+                        return Column(
+                          children: [
+                            GestureDetector(
+                              onTap:  () {
+
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                child: Container(
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                        color: Colors.white,
+                                        style: BorderStyle.solid,
+                                        width: 1.0),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color(0xffF0EFFE),
+                                        blurRadius: 2.0,
+                                        spreadRadius: 0.0,
+                                        offset: Offset(
+                                            2.0, 2.0), // shadow direction: bottom right
+                                      )
+                                    ],
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Center(
+                                        child: Text('${appoints[index].name}',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                color:Color(0xff4C3C88),
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: 'Montserrat')),
+                                      ),
+
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 20,)
+                          ],
+
                         );
+                        //   ListTile(
+                        //   title:
+                        //   Text(' '),
+                        // );
                       } else if (appoints[index]
                           .name
                           .toLowerCase()
@@ -69,10 +160,101 @@ class _searchpState extends State<searchp> {
                               .name
                               .toLowerCase()
                               .contains(controller.text)) {
-                        return ListTile(
-                          title:
-                          Text('${appoints[index].name} '),
+                        return
+                        Column(
+                          children: [
+                            GestureDetector(
+                            onTap:  () {
+
+                        },
+                      child: Padding(
+                      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child: Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                      color: Colors.white,
+                      style: BorderStyle.solid,
+                      width: 1.0),
+                      color: Colors.white,
+                      boxShadow: [
+                      BoxShadow(
+                      color: Color(0xffF0EFFE),
+                      blurRadius: 2.0,
+                      spreadRadius: 0.0,
+                      offset: Offset(
+                      2.0, 2.0), // shadow direction: bottom right
+                      )
+                      ],
+                      ),
+                      child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                      Center(
+                      child: Text('${appoints[index].name}',
+                      style: TextStyle(
+                      fontSize: 20,
+                      color:Color(0xff4C3C88),
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Montserrat')),
+                      ),
+
+                      ],
+                      ),
+                      ),
+                      ),
+                      ),
+                            SizedBox(height: 20,)
+                          ],
+
                         );
+                          GestureDetector(
+                            onTap:  () {
+
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                              child: Container(
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                      color: Colors.white,
+                                      style: BorderStyle.solid,
+                                      width: 1.0),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0xffF0EFFE),
+                                      blurRadius: 2.0,
+                                      spreadRadius: 0.0,
+                                      offset: Offset(
+                                          2.0, 2.0), // shadow direction: bottom right
+                                    )
+                                  ],
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Center(
+                                      child: Text('${appoints[index].name}',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color:Color(0xff4C3C88),
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Montserrat')),
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        //   ListTile(
+                        //   title:
+                        //   Text('${appoints[index].name} '),
+                        // );
                       } else {
                         return Container();
                       }

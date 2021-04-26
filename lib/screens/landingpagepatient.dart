@@ -19,17 +19,21 @@ class _landingpagepatientState extends State<landingpagepatient> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DocOn 12'),
-        backgroundColor: Colors.black,
+        title: Center(child: Text('DocOn')),
+        backgroundColor: Color(0xff4C3C88),
       ),
       body: pageoptions[_selectedpage],
       bottomNavigationBar: Container(
+        color: Colors.red,
         child: BottomNavigationBar(
+          backgroundColor: Colors.white,
+          unselectedItemColor: Colors.white,
+
           items: [
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.people,
-                  color: Colors.black54,
+                  color: Colors.black,
                 ),
                 title: Text(
                   'Appointments',
@@ -51,7 +55,7 @@ class _landingpagepatientState extends State<landingpagepatient> {
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.search,
-                  color: Colors.black54,
+                  color: Colors.black,
                 ),
                 title: Text(
                   'Search Doctors',
@@ -72,13 +76,13 @@ class _landingpagepatientState extends State<landingpagepatient> {
                 ))
           ],
           currentIndex: _selectedpage,
-          selectedItemColor: Colors.red,
+          selectedItemColor: Color(0xff4C3C88),
           onTap: (int index) {
             setState(() {
               _selectedpage = index;
             });
           },
-          backgroundColor: Colors.black,
+
           iconSize: 25,
         ),
       ),

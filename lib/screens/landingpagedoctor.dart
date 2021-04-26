@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:doctor/screens/Doctor/addpatient.dart';
+
 import 'package:doctor/screens/Doctor/appointments.dart';
 import 'package:doctor/screens/Doctor/searchpatients.dart';
 import 'package:doctor/screens/Doctor/settings.dart';
@@ -14,23 +14,27 @@ class _landingpagedoctorState extends State<landingpagedoctor> {
   final uid = FirebaseAuth.instance.currentUser.uid;
 
   int _selectedpage = 0;
-  final pageoptions = [appointments(), addpatient(), searchp(), settingsd()];
+  final pageoptions = [appointments(), searchp(), settingsd()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DocOn 12'),
-        backgroundColor: Colors.black,
-
+        title: Center(child: Text('DocOn')),
+        backgroundColor: Color(0xff4C3C88),
       ),
       body: pageoptions[_selectedpage],
       bottomNavigationBar: Container(
+        color: Colors.red,
+
         child: BottomNavigationBar(
+          backgroundColor: Colors.white,
+          unselectedItemColor: Colors.white,
           items: [
+
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.people,
-                  color: Colors.black54,
+                  color: Colors.black,
                 ),
                 title: Text(
                   'Appointments',
@@ -38,21 +42,12 @@ class _landingpagedoctorState extends State<landingpagedoctor> {
                     fontFamily: 'sans',
                   ),
                 )),
+
             BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.add,
-                  color: Colors.black54,
-                ),
-                title: Text(
-                  'Add Patients',
-                  style: TextStyle(
-                    fontFamily: 'sans',
-                  ),
-                )),
-            BottomNavigationBarItem(
+
                 icon: Icon(
                   Icons.search,
-                  color: Colors.black54,
+                  color: Colors.black,
                 ),
                 title: Text(
                   'Search Patients',
@@ -63,7 +58,7 @@ class _landingpagedoctorState extends State<landingpagedoctor> {
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.settings,
-                  color: Colors.black54,
+                  color: Colors.black,
                 ),
                 title: Text(
                   'Settings',
@@ -73,13 +68,13 @@ class _landingpagedoctorState extends State<landingpagedoctor> {
                 ))
           ],
           currentIndex: _selectedpage,
-          selectedItemColor: Colors.red,
+          selectedItemColor: Color(0xff4C3C88),
           onTap: (int index) {
             setState(() {
               _selectedpage = index;
             });
           },
-          backgroundColor: Colors.black,
+
           iconSize: 25,
         ),
       ),

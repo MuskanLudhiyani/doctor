@@ -2,6 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:doctor/database.dart';
+import 'package:doctor/authentication.dart';
+import 'package:provider/provider.dart';
+import 'package:doctor/models/appointment.dart';
 
 class appointments extends StatefulWidget {
   @override
@@ -9,60 +15,109 @@ class appointments extends StatefulWidget {
 }
 
 class _appointmentsState extends State<appointments> {
-  var data;
-  var url = Uri.parse("https://jsonkeeper.com/b/N6OF");
 
-  Future<String> getData() async {
-    var response = await http.get(url, headers: {"Accept": "application/json"});
-    this.setState(() {
-      data = jsonDecode(response.body);
-    });
-    return "Success!";
-  }
-
-  @override
-  void initState() {
-    this.getData();
-  }
 
   @override
   Widget build(BuildContext context) {
+    return StreamProvider<List<appointment>>.value(
+      value: DatabaseService().appoints,
+      initialData: [],
+      builder: (context, appointments) {
+        return appointlist(context);
+      },
+    );
+  }
+
+  Widget appointlist(BuildContext context) {
+    final String _uid = FirebaseAuth.instance.currentUser.uid;
+    final appoints = Provider.of<List<appointment>>(context);
+    if (appoints.isEmpty || appoints == null) {
+      return CircularProgressIndicator();
+    }
     return Scaffold(
       backgroundColor: Color(0xffEFF0F5),
       body: ListView.builder(
-        itemCount: data == null ? 0 : data.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            child: Row(
-              children: <Widget>[
-                Column(
-                  children: [
-                    Container(
-                        margin: EdgeInsets.all(10),
-                        child: Text("Name: ${data[index]["name"]}")),
-                    Container(
-                        margin: EdgeInsets.all(10),
-                        child: Text("Date: ${data[index]["date"]}")),
-                  ],
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Column(
-                  children: [
-                    Container(
-                        margin: EdgeInsets.all(10),
-                        child: Text(data[index]["sex"])),
-                    Container(
-                        margin: EdgeInsets.all(10),
-                        child: Text(data[index]["age"]))
-                  ],
-                ),
-              ],
-            ),
-          );
-        },
-      ),
+          itemCount: appoints.length,
+          itemBuilder: (context, index) {
+            if (appoints[index].doctor == _uid) {
+               return Column(
+                 children: [
+                   GestureDetector(
+                     onTap:  () {
+
+                     },
+                     child: Padding(
+                       padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                       child: Container(
+                         height: 80,
+                         width: 500,
+                         decoration: BoxDecoration(
+                           borderRadius: BorderRadius.circular(10),
+                           border: Border.all(
+                               color: Colors.white,
+                               style: BorderStyle.solid,
+                               width: 1.0),
+                           color: Colors.white,
+                           boxShadow: [
+                             BoxShadow(
+                               color: Color(0xffF0EFFE),
+                               blurRadius: 2.0,
+                               spreadRadius: 0.0,
+                               offset: Offset(
+                                   2.0, 2.0), // shadow direction: bottom right
+                             )
+                           ],
+                         ),
+                         child: Column(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           children: <Widget>[
+                             Text(appoints[index].pname,
+                                 style: TextStyle(
+                                     fontSize: 20,
+                                     color:Color(0xff4C3C88),
+                                     fontWeight: FontWeight.bold,
+                                     fontFamily: 'Montserrat')),
+                                        Text(appoints[index].time,
+                             style: TextStyle(
+                                 fontSize: 15,
+                                 color:Colors.red,
+                                 fontWeight: FontWeight.bold,
+                                 fontFamily: 'Montserrat'),),
+                                      Text(appoints[index].date,
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              color:Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Montserrat')),
+
+
+                           ],
+                         ),
+                       ),
+                     ),
+                   ),
+                   SizedBox(height: 20,)
+                 ],
+
+               );
+              // Padding(
+              //     padding: EdgeInsets.only(top: 8),
+              //     child: Container(
+              //       color: Colors.blue[50],
+              //       child: Column(
+              //         children: [
+              //           Text(appoints[index].pname),
+              //           Text(appoints[index].time),
+              //           Text(appoints[index].date),
+              //         ],
+              //       ),
+              //     ));
+            } else {
+              return SizedBox(
+                height: 0,
+              );
+            }
+          }),
     );
   }
 }

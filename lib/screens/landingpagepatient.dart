@@ -14,7 +14,7 @@ class _landingpagepatientState extends State<landingpagepatient> {
   final uid = FirebaseAuth.instance.currentUser.uid;
 
   int _selectedpage = 0;
-  final pageoptions = [appointments(), DoctorsInfo(), searchd(), settingsp()];
+  final pageoptions = [appointments(), searchd(), settingsp()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,17 +41,7 @@ class _landingpagepatientState extends State<landingpagepatient> {
                     fontFamily: 'sans',
                   ),
                 )),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.add,
-                  color: Colors.black54,
-                ),
-                title: Text(
-                  'Make Appointment',
-                  style: TextStyle(
-                    fontFamily: 'sans',
-                  ),
-                )),
+
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.search,

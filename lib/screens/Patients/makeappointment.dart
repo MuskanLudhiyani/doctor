@@ -5,17 +5,26 @@ import 'package:doctor/database.dart';
 
 class DoctorsInfo extends StatefulWidget {
   String doctoruid = '';
-  DoctorsInfo({Key key, this.doctoruid}) : super(key: key);
+  String dname;
+  DoctorsInfo(String s,String name)
+  {
+    doctoruid=s;
+    dname=name;
+
+
+  }
+
+
   @override
   _DoctorsInfoState createState() => _DoctorsInfoState();
 }
 
 class _DoctorsInfoState extends State<DoctorsInfo> {
   String puid = FirebaseAuth.instance.currentUser.uid;
-  TextEditingController duid = TextEditingController();
+
   TextEditingController date = TextEditingController();
   TextEditingController time = TextEditingController();
-  TextEditingController dname = TextEditingController();
+
   TextEditingController pname = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -23,50 +32,7 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TextField(
-                controller: duid,
-                cursorColor: Color(0xff90E5BF),
-                decoration: InputDecoration(
-                    filled: true,
-                    hintText: "Doctor's UID",
-                    suffixIcon: GestureDetector(
-                      child: Text(
-                        "",
-                        style: TextStyle(
-                          color: Color(0xff90E5BF),
-                        ),
-                      ),
-                    ),
-                    contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                    fillColor: Color(0xffFFFFFF),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: const BorderRadius.all(
-                        const Radius.circular(10.0),
-                      ),
-                    ))),
-            TextField(
-                controller: dname,
-                cursorColor: Color(0xff90E5BF),
-                decoration: InputDecoration(
-                    filled: true,
-                    hintText: "Doctor's Name",
-                    suffixIcon: GestureDetector(
-                      child: Text(
-                        "",
-                        style: TextStyle(
-                          color: Color(0xff90E5BF),
-                        ),
-                      ),
-                    ),
-                    contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                    fillColor: Color(0xffFFFFFF),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: const BorderRadius.all(
-                        const Radius.circular(10.0),
-                      ),
-                    ))),
+
             TextField(
                 controller: pname,
                 cursorColor: Color(0xff90E5BF),
@@ -136,8 +102,8 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
             GestureDetector(
               onTap: () async {
                 try {
-                  await DatabaseService().updateAppointmentData(dname.text,
-                      pname.text, duid.text, puid, date.text, time.text, -1);
+                  await DatabaseService().updateAppointmentData(widget.dname,
+                      pname.text, widget.doctoruid, puid, date.text, time.text, -1);
                   Fluttertoast.showToast(msg: 'Added Appointment');
                 } on FirebaseException catch (e) {
                   Fluttertoast.showToast(msg: e.message);

@@ -63,7 +63,6 @@ class _searchdState extends State<searchd> {
                       return Column(
                         children: [
                           GestureDetector(
-
                               onTap: () {
                                 Navigator.push(
                                   context,

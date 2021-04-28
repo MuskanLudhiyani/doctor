@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor/models/appointment.dart';
 import 'package:doctor/models/doctor.dart';
 import 'package:doctor/models/patient.dart';
-import 'package:flutter/cupertino.dart';
 
 class DatabaseService {
   final String uid;
@@ -13,6 +12,8 @@ class DatabaseService {
       FirebaseFirestore.instance.collection('doctors');
   final CollectionReference appointments =
       FirebaseFirestore.instance.collection('appointments');
+  final CollectionReference prescriptions =
+      FirebaseFirestore.instance.collection('prescriptions');
 
   Future updatePatientData(
     String puid,
@@ -156,5 +157,20 @@ class DatabaseService {
           phoneNumber: doc.data()['phoneNumber'] ?? '',
           address: doc.data()['address'] ?? '');
     }).toList();
+  }
+
+  Future addPrescriptionToPatient(
+      String puid, String pname, String dname, String disease, String suggestions) async {
+    return await prescriptions
+        .doc(puid)
+        .set({
+          'puid': puid,
+          'pname': pname,
+          'dname': dname,
+          'disease': disease,
+          'suggestions': suggestions
+        })
+        .then((value) => print("Prescription added successfully"))
+        .catchError((error) => print("Failed to add prescription: $error"));
   }
 }

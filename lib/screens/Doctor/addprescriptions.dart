@@ -1,27 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:doctor/database.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class DoctorsInfo extends StatefulWidget {
-  String doctoruid = '';
-  String dname;
-  DoctorsInfo(String s, String name) {
-    doctoruid = s;
-    dname = name;
-  }
-
+class addPrescription extends StatefulWidget {
   @override
-  _DoctorsInfoState createState() => _DoctorsInfoState();
+  _addPrescriptionState createState() => _addPrescriptionState();
 }
 
-class _DoctorsInfoState extends State<DoctorsInfo> {
-  String puid = FirebaseAuth.instance.currentUser.uid;
-
-  TextEditingController date = TextEditingController();
-  TextEditingController time = TextEditingController();
-
+class _addPrescriptionState extends State<addPrescription> {
   TextEditingController pname = TextEditingController();
+  TextEditingController puid = TextEditingController();
+  TextEditingController dname = TextEditingController();
+  TextEditingController disease = TextEditingController();
+  TextEditingController suggestion = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,11 +43,11 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
                       ),
                     ))),
             TextField(
-                controller: date,
+                controller: puid,
                 cursorColor: Color(0xff90E5BF),
                 decoration: InputDecoration(
                     filled: true,
-                    hintText: "Date",
+                    hintText: "Patient UID",
                     suffixIcon: GestureDetector(
                       child: Text(
                         "",
@@ -73,11 +65,55 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
                       ),
                     ))),
             TextField(
-                controller: time,
+                controller: dname,
                 cursorColor: Color(0xff90E5BF),
                 decoration: InputDecoration(
                     filled: true,
-                    hintText: "Time",
+                    hintText: "Doctor's Name",
+                    suffixIcon: GestureDetector(
+                      child: Text(
+                        "",
+                        style: TextStyle(
+                          color: Color(0xff90E5BF),
+                        ),
+                      ),
+                    ),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 15),
+                    fillColor: Color(0xffFFFFFF),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
+                      ),
+                    ))),
+            TextField(
+                controller: disease,
+                cursorColor: Color(0xff90E5BF),
+                decoration: InputDecoration(
+                    filled: true,
+                    hintText: "Disease",
+                    suffixIcon: GestureDetector(
+                      child: Text(
+                        "",
+                        style: TextStyle(
+                          color: Color(0xff90E5BF),
+                        ),
+                      ),
+                    ),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 15),
+                    fillColor: Color(0xffFFFFFF),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
+                      ),
+                    ))),
+            TextField(
+                controller: dname,
+                cursorColor: Color(0xff90E5BF),
+                decoration: InputDecoration(
+                    filled: true,
+                    hintText: "Suggestion",
                     suffixIcon: GestureDetector(
                       child: Text(
                         "",
@@ -97,14 +133,8 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
             GestureDetector(
               onTap: () async {
                 try {
-                  await DatabaseService().updateAppointmentData(
-                      widget.dname,
-                      pname.text,
-                      widget.doctoruid,
-                      puid,
-                      date.text,
-                      time.text,
-                      -1);
+                  await DatabaseService().addPrescriptionToPatient(puid.text,
+                      pname.text, dname.text, disease.text, suggestion.text);
                   Fluttertoast.showToast(msg: 'Added Appointment');
                 } on FirebaseException catch (e) {
                   Fluttertoast.showToast(msg: e.message);
@@ -136,7 +166,7 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Center(
-                        child: Text('Add Appointment',
+                        child: Text('Add Prescription',
                             style: TextStyle(
                                 fontSize: 20,
                                 color: Color(0xff4C3C88),

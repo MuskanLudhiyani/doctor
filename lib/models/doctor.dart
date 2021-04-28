@@ -1,4 +1,5 @@
 class doctor {
+  final String duid;
   final String name;
   final String gender;
   final String phoneNumber;
@@ -6,7 +7,9 @@ class doctor {
   final String address;
 
   doctor(
-      {this.name,
+      {
+        this.duid,
+        this.name,
       this.gender,
       this.phoneNumber,
       this.speciality,

@@ -1,4 +1,5 @@
 class patient {
+  final String puid;
   final String name;
   final String gender;
   final String bloodGroup;
@@ -6,5 +7,10 @@ class patient {
   final int age;
 
   patient(
-      {this.name, this.gender, this.bloodGroup, this.phoneNumber, this.age});
+      {this.puid,
+      this.name,
+      this.gender,
+      this.bloodGroup,
+      this.phoneNumber,
+      this.age});
 }

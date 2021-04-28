@@ -15,6 +15,7 @@ class DatabaseService {
       FirebaseFirestore.instance.collection('appointments');
 
   Future updatePatientData(
+    String puid,
     String name,
     int age,
     String gender,
@@ -24,6 +25,7 @@ class DatabaseService {
     return await patients
         .doc(uid)
         .set({
+          'puid': puid,
           'name': name,
           'age': age,
           'gender': gender,
@@ -35,6 +37,7 @@ class DatabaseService {
   }
 
   Future updateDoctorData(
+    String duid,
     String name,
     String gender,
     String phoneNumber,
@@ -45,6 +48,7 @@ class DatabaseService {
     return await doctors
         .doc(uid)
         .set({
+          'duid': duid,
           'name': name,
           'gender': gender,
           'phoneNumber': phoneNumber,

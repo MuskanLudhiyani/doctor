@@ -351,6 +351,7 @@ class _signuppatientState extends State<signuppatient> {
                                   newuser.user.sendEmailVerification();
                                   await DatabaseService(uid: newuser.user.uid)
                                       .updatePatientData(
+                                        newuser.user.uid,
                                       name.text,
                                       int.parse(age.text),
                                       _gender,

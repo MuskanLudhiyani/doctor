@@ -134,6 +134,7 @@ class DatabaseService {
   List<patient> patientListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return patient(
+          puid: doc.data()['puid'] ?? '',
           name: doc.data()['name'] ?? '',
           gender: doc.data()['gender'] ?? '',
           bloodGroup: doc.data()['bloodGroup'] ?? '',

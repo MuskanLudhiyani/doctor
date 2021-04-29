@@ -8,10 +8,10 @@ class addPrescription extends StatefulWidget {
   @override
   _addPrescriptionState createState() => _addPrescriptionState();
   patient s;
-  addPrescription(patient p){
-    s=p;
+  addPrescription(patient p) {
+    s = p;
     print(s.puid);
-
+    print(s.name);
   }
 }
 
@@ -30,7 +30,7 @@ class _addPrescriptionState extends State<addPrescription> {
           Text("Patient's Name : ${widget.s.name}",
               style: TextStyle(
                   fontSize: 20,
-                  color:Color(0xff4C3C88),
+                  color: Color(0xff4C3C88),
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Montserrat')),
           TextField(

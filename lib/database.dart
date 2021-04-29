@@ -45,7 +45,6 @@ class DatabaseService {
     String address,
     String speciality,
   ) async {
-    List<String> s = [];
     return await doctors
         .doc(uid)
         .set({
@@ -55,7 +54,6 @@ class DatabaseService {
           'phoneNumber': phoneNumber,
           'address': address,
           'speciality': speciality,
-          'patients': s,
         })
         .then((value) => print("User added successfully"))
         .catchError((error) => print("Failed to add user: $error"));
@@ -159,8 +157,8 @@ class DatabaseService {
     }).toList();
   }
 
-  Future addPrescriptionToPatient(
-      String puid, String pname, String dname, String disease, String suggestions) async {
+  Future addPrescriptionToPatient(String puid, String pname, String dname,
+      String disease, String suggestions) async {
     return await prescriptions
         .doc(puid)
         .set({

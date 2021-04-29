@@ -109,7 +109,7 @@ class _addPrescriptionState extends State<addPrescription> {
                       ),
                     ))),
             TextField(
-                controller: dname,
+                controller: suggestion,
                 cursorColor: Color(0xff90E5BF),
                 decoration: InputDecoration(
                     filled: true,
@@ -135,7 +135,7 @@ class _addPrescriptionState extends State<addPrescription> {
                 try {
                   await DatabaseService().addPrescriptionToPatient(puid.text,
                       pname.text, dname.text, disease.text, suggestion.text);
-                  Fluttertoast.showToast(msg: 'Added Appointment');
+                  Fluttertoast.showToast(msg: 'Added Prescription');
                 } on FirebaseException catch (e) {
                   Fluttertoast.showToast(msg: e.message);
                   print(e);

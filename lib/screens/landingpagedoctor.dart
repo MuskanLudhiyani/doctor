@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:doctor/screens/Doctor/appointments.dart';
 import 'package:doctor/screens/Doctor/searchpatients.dart';
 import 'package:doctor/screens/Doctor/settings.dart';
+import 'Doctor/addprescriptions.dart';
 
 class landingpagedoctor extends StatefulWidget {
   @override
@@ -14,7 +15,12 @@ class _landingpagedoctorState extends State<landingpagedoctor> {
   final uid = FirebaseAuth.instance.currentUser.uid;
 
   int _selectedpage = 0;
-  final pageoptions = [appointments(), searchp(), settingsd()];
+  final pageoptions = [
+    appointments(),
+    addPrescription(),
+    searchp(),
+    settingsd()
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,12 +31,10 @@ class _landingpagedoctorState extends State<landingpagedoctor> {
       body: pageoptions[_selectedpage],
       bottomNavigationBar: Container(
         color: Colors.red,
-
         child: BottomNavigationBar(
           backgroundColor: Colors.white,
           unselectedItemColor: Colors.white,
           items: [
-
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.people,
@@ -42,9 +46,13 @@ class _landingpagedoctorState extends State<landingpagedoctor> {
                     fontFamily: 'sans',
                   ),
                 )),
-
             BottomNavigationBarItem(
-
+                icon: Icon(
+                  Icons.tap_and_play_outlined,
+                  color: Colors.black,
+                ),
+                title: Text('add Prescription')),
+            BottomNavigationBarItem(
                 icon: Icon(
                   Icons.search,
                   color: Colors.black,
@@ -74,7 +82,6 @@ class _landingpagedoctorState extends State<landingpagedoctor> {
               _selectedpage = index;
             });
           },
-
           iconSize: 25,
         ),
       ),

@@ -25,22 +25,6 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            TextField(
-                controller: pname,
-                cursorColor: Color(0xff90E5BF),
-                decoration: InputDecoration(
-                    filled: true,
-                    hintText: "Patient's Name",
-                    suffixIcon: GestureDetector(
-                      child: Text(
-                        "",
-                        style: TextStyle(
-                          color: Color(0xff90E5BF),
-=======
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -75,7 +59,6 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
                           style: TextStyle(
                             color: Color(0xff90E5BF),
                           ),
->>>>>>> 53f541c5b8cc2febd51ab5987969ff3d85dd9a84
                         ),
                       ),
                       contentPadding: EdgeInsets.symmetric(
@@ -144,54 +127,6 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
                     style: TextStyle(
                       color: Color(0xff90E5BF),
                     ),
-<<<<<<< HEAD
-                    contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                    fillColor: Color(0xffFFFFFF),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: const BorderRadius.all(
-                        const Radius.circular(10.0),
-                      ),
-                    ))),
-            GestureDetector(
-              onTap: () async {
-                try {
-                  await DatabaseService().updateAppointmentData(
-                      widget.dname,
-                      pname.text,
-                      widget.doctoruid,
-                      puid,
-                      date.text,
-                      time.text,
-                      -1);
-                  Fluttertoast.showToast(msg: 'Added Appointment');
-                } on FirebaseException catch (e) {
-                  Fluttertoast.showToast(msg: e.message);
-                  print(e);
-                }
-              },
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: Container(
-                  height: 50,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                        color: Colors.white,
-                        style: BorderStyle.solid,
-                        width: 1.0),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xffF0EFFE),
-                        blurRadius: 2.0,
-                        spreadRadius: 0.0,
-                        offset:
-                            Offset(2.0, 2.0), // shadow direction: bottom right
-                      )
-                    ],
-=======
->>>>>>> 53f541c5b8cc2febd51ab5987969ff3d85dd9a84
                   ),
                 ),
                 contentPadding: EdgeInsets.symmetric(

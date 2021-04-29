@@ -25,6 +25,20 @@ class _apState extends State<ap> {
                   color:Colors.red,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Montserrat')),
+          Center(
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: NetworkImage(
+                      "https://png.pngtree.com/png-clipart/20190628/original/pngtree-cute-cartoon-little-boy-medical-patient-in-wheelchair-png-image_4047851.jpg"),
+                  fit: BoxFit.fill,
+                ),
+              ),
+              height: 250,
+              width: 250,
+            ),
+          ),
 
           Container(
 

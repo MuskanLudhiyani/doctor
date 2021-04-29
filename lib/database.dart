@@ -60,6 +60,7 @@ class DatabaseService {
   }
 
   Future updateAppointmentData(
+    String aid,
     String dname,
     String pname,
     String duid,
@@ -69,8 +70,9 @@ class DatabaseService {
     int approved,
   ) async {
     return await appointments
-        .doc(uid)
+        .doc(duid+puid)
         .set({
+          'aid': aid,
           'dname': dname,
           'pname': pname,
           'doctor': duid,
@@ -79,8 +81,8 @@ class DatabaseService {
           'time': time,
           'approved': approved,
         })
-        .then((value) => print("User added successfully"))
-        .catchError((error) => print("Failed to add user: $error"));
+        .then((value) => print("Appointment added successfully"))
+        .catchError((error) => print("Failed to add appointment: $error"));
   }
 
   Future<bool> checkIfDoctor() {
@@ -117,6 +119,7 @@ class DatabaseService {
   List<appointment> appointmentListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return appointment(
+          aid: doc.data()['aid'] ?? '',
           date: doc.data()['date'] ?? '',
           dname: doc.data()['dname'] ?? '',
           doctor: doc.data()['doctor'] ?? '',
@@ -156,6 +159,10 @@ class DatabaseService {
           phoneNumber: doc.data()['phoneNumber'] ?? '',
           address: doc.data()['address'] ?? '');
     }).toList();
+  }
+
+  prescriptionListFromSnapshot() {
+    return prescriptions.get();
   }
 
   Future addPrescriptionToPatient(String puid, String pname, String dname,

@@ -7,7 +7,7 @@ class DoctorsInfo extends StatefulWidget {
   String doctoruid = '';
   String dname;
   DoctorsInfo(String s, String name) {
-    doctoruid = s;
+    doctoruid = s ?? '';
     dname = name;
   }
 
@@ -33,13 +33,13 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
             child: Text("Dr. ${widget.dname}",
                 style: TextStyle(
                     fontSize: 20,
-                    color:Color(0xff4C3C88),
+                    color: Color(0xff4C3C88),
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Montserrat')),
           ),
-          SizedBox(height: 20,),
-
-
+          SizedBox(
+            height: 20,
+          ),
           Padding(
             padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Theme(
@@ -61,19 +61,19 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
                           ),
                         ),
                       ),
-                      contentPadding: EdgeInsets.symmetric(
-                          horizontal: 15),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 15),
                       fillColor: Color(0xffFFFFFF),
                       border: OutlineInputBorder(
                         borderSide: BorderSide.none,
-                        borderRadius:
-                        const BorderRadius.all(
+                        borderRadius: const BorderRadius.all(
                           const Radius.circular(10.0),
                         ),
                       ))),
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Padding(
             padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Theme(
@@ -95,59 +95,65 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
                           ),
                         ),
                       ),
-                      contentPadding: EdgeInsets.symmetric(
-                          horizontal: 15),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 15),
                       fillColor: Color(0xffFFFFFF),
                       border: OutlineInputBorder(
                         borderSide: BorderSide.none,
-                        borderRadius:
-                        const BorderRadius.all(
+                        borderRadius: const BorderRadius.all(
                           const Radius.circular(10.0),
                         ),
                       ))),
             ),
           ),
-          SizedBox(height: 10,),
-      Padding(
-      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-      child: Theme(
-        data: ThemeData(
-          primaryColor: Color(0xffFFFFFF),
-          primaryColorDark: Color(0xffFFFFFF),
-        ),
-        child: TextField(
-            controller: time,
-            cursorColor: Color(0xff90E5BF),
-            decoration: InputDecoration(
-                filled: true,
-                hintText: "Time",
-                suffixIcon: GestureDetector(
-                  child: Text(
-                    "",
-                    style: TextStyle(
-                      color: Color(0xff90E5BF),
-                    ),
-                  ),
-                ),
-                contentPadding: EdgeInsets.symmetric(
-                    horizontal: 15),
-                fillColor: Color(0xffFFFFFF),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius:
-                  const BorderRadius.all(
-                    const Radius.circular(10.0),
-                  ),
-                ))),
-      ),
-      ),
-          SizedBox(height: 10,),
-
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+            child: Theme(
+              data: ThemeData(
+                primaryColor: Color(0xffFFFFFF),
+                primaryColorDark: Color(0xffFFFFFF),
+              ),
+              child: TextField(
+                  controller: time,
+                  cursorColor: Color(0xff90E5BF),
+                  decoration: InputDecoration(
+                      filled: true,
+                      hintText: "Time",
+                      suffixIcon: GestureDetector(
+                        child: Text(
+                          "",
+                          style: TextStyle(
+                            color: Color(0xff90E5BF),
+                          ),
+                        ),
+                      ),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 15),
+                      fillColor: Color(0xffFFFFFF),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: const BorderRadius.all(
+                          const Radius.circular(10.0),
+                        ),
+                      ))),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
           GestureDetector(
             onTap: () async {
               try {
-                await DatabaseService().updateAppointmentData(widget.dname,
-                    pname.text, widget.doctoruid, puid, date.text, time.text, -1);
+                await DatabaseService().updateAppointmentData(
+                    widget.doctoruid + puid,
+                    widget.dname,
+                    pname.text,
+                    widget.doctoruid,
+                    puid,
+                    date.text,
+                    time.text,
+                    -1);
                 Fluttertoast.showToast(msg: 'Added Appointment');
               } on FirebaseException catch (e) {
                 Fluttertoast.showToast(msg: e.message);

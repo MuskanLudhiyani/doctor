@@ -1,4 +1,5 @@
 class appointment {
+  final String aid;
   final String date;
   final String doctor;
   final String patient;
@@ -7,13 +8,13 @@ class appointment {
   final String pname;
   final int approved;
 
-  appointment({
-    this.date,
-    this.doctor,
-    this.patient,
-    this.time,
-    this.dname,
-    this.pname,
-    this.approved
-  });
+  appointment(
+      {this.aid,
+      this.date,
+      this.doctor,
+      this.patient,
+      this.time,
+      this.dname,
+      this.pname,
+      this.approved});
 }

@@ -10,8 +10,6 @@ class addPrescription extends StatefulWidget {
   patient s;
   addPrescription(patient p) {
     s = p;
-    print(s.puid);
-    print(s.name);
   }
 }
 

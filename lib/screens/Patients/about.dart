@@ -91,11 +91,12 @@ class _avcState extends State<avc> {
           ),
           GestureDetector(
             onTap: () {
+              print(widget.s.duid);
               Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) =>
-                        (DoctorsInfo(widget.s.duid, widget.s.name))),
+                        (DoctorsInfo(widget.s))),
               );
             },
             child: Padding(

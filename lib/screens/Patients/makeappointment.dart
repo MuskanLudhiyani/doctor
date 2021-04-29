@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:doctor/database.dart';
+import 'package:doctor/models/doctor.dart';
 
 class DoctorsInfo extends StatefulWidget {
-  String doctoruid = '';
-  String dname;
-  DoctorsInfo(String s, String name) {
-    doctoruid = s ?? '';
-    dname = name;
+  doctor s;
+  DoctorsInfo(doctor p) {
+    s=p;
   }
 
   @override
@@ -30,7 +29,7 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
         children: [
           Padding(
             padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-            child: Text("Dr. ${widget.dname}",
+            child: Text("Dr. ${widget.s.name}",
                 style: TextStyle(
                     fontSize: 20,
                     color: Color(0xff4C3C88),
@@ -146,10 +145,10 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
             onTap: () async {
               try {
                 await DatabaseService().updateAppointmentData(
-                    widget.doctoruid + puid,
-                    widget.dname,
+                    widget.s.duid + puid,
+                    widget.s.name,
                     pname.text,
-                    widget.doctoruid,
+                    widget.s.duid,
                     puid,
                     date.text,
                     time.text,

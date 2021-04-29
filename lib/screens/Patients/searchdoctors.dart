@@ -64,6 +64,7 @@ class _searchdState extends State<searchd> {
                         children: [
                           GestureDetector(
                               onTap: () {
+                                print(appoints[index].duid);
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(builder: (context) => (avc(appoints[index]))),

@@ -9,6 +9,8 @@ import 'package:doctor/authentication.dart';
 import 'package:provider/provider.dart';
 import 'package:doctor/models/appointment.dart';
 
+import '../../database.dart';
+
 class appointments extends StatefulWidget {
   @override
   _appointmentsState createState() => _appointmentsState();
@@ -91,11 +93,21 @@ class _appointmentsState extends State<appointments> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       ElevatedButton(
+                                          onPressed: () {
+                                            DatabaseService()
+                                                .setAppointmentApproved(
+                                                    appoints[index].aid);
+                                          },
                                           child: Icon(
-                                        Icons.check,
-                                        color: Colors.green,
-                                      )),
+                                            Icons.check,
+                                            color: Colors.green,
+                                          )),
                                       ElevatedButton(
+                                          onPressed: () {
+                                            DatabaseService()
+                                                .setAppointmentRejected(
+                                                    appoints[index].aid);
+                                          },
                                           child: Icon(Icons.clear,
                                               color: Colors.red))
                                     ],

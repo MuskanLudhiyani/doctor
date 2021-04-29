@@ -1,9 +1,9 @@
-import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor/models/appointment.dart';
 import 'package:doctor/models/doctor.dart';
 import 'package:doctor/models/patient.dart';
+
+import 'models/appointment.dart';
 
 class DatabaseService {
   final String uid;
@@ -84,6 +84,14 @@ class DatabaseService {
         })
         .then((value) => print("Appointment added successfully"))
         .catchError((error) => print("Failed to add appointment: $error"));
+  }
+
+  Future setAppointmentApproved(String aid) async {
+    return await appointments.doc(aid).update({'approved': 1});
+  }
+
+  Future setAppointmentRejected(String aid) async {
+    return await appointments.doc(aid).update({'approved': 0});
   }
 
   Future<bool> checkIfDoctor() {

@@ -27,8 +27,6 @@ class _apState extends State<ap> {
                   color: Colors.red,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Montserrat')),
-<<<<<<< HEAD
-=======
           Center(
             child: Container(
               decoration: BoxDecoration(
@@ -44,7 +42,6 @@ class _apState extends State<ap> {
             ),
           ),
 
->>>>>>> 8f31ac9c444952b7820025c41fc20e247b583b48
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),

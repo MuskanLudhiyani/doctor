@@ -70,7 +70,7 @@ class DatabaseService {
     int approved,
   ) async {
     return await appointments
-        .doc(duid+puid)
+        .doc(duid + puid)
         .set({
           'aid': aid,
           'dname': dname,
@@ -153,6 +153,7 @@ class DatabaseService {
   List<doctor> doctorListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return doctor(
+          duid: doc.data()['duid'] ?? '',
           name: doc.data()['name'] ?? '',
           gender: doc.data()['gender'] ?? '',
           speciality: doc.data()['speciality'] ?? '',

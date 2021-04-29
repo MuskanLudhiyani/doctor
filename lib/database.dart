@@ -4,6 +4,8 @@ import 'package:doctor/models/doctor.dart';
 import 'package:doctor/models/patient.dart';
 import 'package:doctor/models/prescription.dart';
 
+import 'models/appointment.dart';
+
 class DatabaseService {
   final String uid;
   DatabaseService({this.uid});
@@ -61,7 +63,6 @@ class DatabaseService {
   }
 
   Future updateAppointmentData(
-    String aid,
     String dname,
     String pname,
     String duid,
@@ -70,10 +71,10 @@ class DatabaseService {
     String time,
     int approved,
   ) async {
-    return await appointments
-        .doc(duid + puid)
+    DocumentReference documentReference = appointments.doc();
+    return await documentReference
         .set({
-          'aid': aid,
+          'aid': documentReference.id,
           'dname': dname,
           'pname': pname,
           'doctor': duid,
@@ -84,6 +85,14 @@ class DatabaseService {
         })
         .then((value) => print("Appointment added successfully"))
         .catchError((error) => print("Failed to add appointment: $error"));
+  }
+
+  Future setAppointmentApproved(String aid) async {
+    return await appointments.doc(aid).update({'approved': 1});
+  }
+
+  Future setAppointmentRejected(String aid) async {
+    return await appointments.doc(aid).update({'approved': 0});
   }
 
   Future<bool> checkIfDoctor() {

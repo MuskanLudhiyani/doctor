@@ -7,7 +7,7 @@ import 'package:doctor/models/doctor.dart';
 class DoctorsInfo extends StatefulWidget {
   doctor s;
   DoctorsInfo(doctor p) {
-    s=p;
+    s = p;
   }
 
   @override
@@ -144,15 +144,8 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
           GestureDetector(
             onTap: () async {
               try {
-                await DatabaseService().updateAppointmentData(
-                    widget.s.duid + puid,
-                    widget.s.name,
-                    pname.text,
-                    widget.s.duid,
-                    puid,
-                    date.text,
-                    time.text,
-                    -1);
+                await DatabaseService().updateAppointmentData(widget.s.name,
+                    pname.text, widget.s.duid, puid, date.text, time.text, -1);
                 Fluttertoast.showToast(msg: 'Added Appointment');
               } on FirebaseException catch (e) {
                 Fluttertoast.showToast(msg: e.message);

@@ -37,9 +37,7 @@ class _appointmentsState extends State<appointments> {
               return Column(
                 children: [
                   GestureDetector(
-                    onTap:  () {
-
-                    },
+                    onTap: () {},
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                       child: Container(
@@ -68,31 +66,52 @@ class _appointmentsState extends State<appointments> {
                             Text(appoints[index].dname,
                                 style: TextStyle(
                                     fontSize: 20,
-                                    color:Color(0xff4C3C88),
+                                    color: Color(0xff4C3C88),
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Montserrat')),
-                            Text(appoints[index].time,
+                            Text(
+                              appoints[index].time,
                               style: TextStyle(
                                   fontSize: 15,
-                                  color:Colors.red,
+                                  color: Colors.red,
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: 'Montserrat'),),
+                                  fontFamily: 'Montserrat'),
+                            ),
                             Text(appoints[index].date,
                                 style: TextStyle(
                                     fontSize: 15,
-                                    color:Colors.black,
+                                    color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Montserrat')),
-
-
+                            (appoints[index].approved == -1)
+                                ? Text('Pending',
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.orange,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Montserrat'))
+                                : (appoints[index] == 0)
+                                    ? Text('Rejected',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Montserrat'))
+                                    : Text('Approved',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.green,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Montserrat'))
                           ],
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,)
+                  SizedBox(
+                    height: 20,
+                  )
                 ],
-
               );
             } else {
               return SizedBox(

@@ -1,10 +1,12 @@
 import 'package:doctor/database.dart';
+import 'package:doctor/screens/Doctor/aboutpatient.dart';
 import 'package:doctor/screens/Doctor/appointments.dart';
 import 'package:flutter/material.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:doctor/models/patient.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
+import 'addprescriptions.dart';
 import 'addprescriptions.dart';
 class searchp extends StatefulWidget {
   @override
@@ -106,7 +108,7 @@ class _searchpState extends State<searchp> {
                               onTap:  () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => (addPrescription(appoints[index]))),
+                                  MaterialPageRoute(builder: (context) => (ap(appoints[index]))),
                                 );
 
                               },

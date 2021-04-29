@@ -1,7 +1,19 @@
+import 'package:doctor/models/prescription.dart';
 import 'package:doctor/screens/Doctor/addprescriptions.dart';
+import 'package:doctor/screens/Doctor/presp.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor/models/patient.dart';
 import 'package:doctor/database.dart';
+import 'package:doctor/database.dart';
+import 'package:doctor/screens/Doctor/aboutpatient.dart';
+import 'package:doctor/screens/Doctor/appointments.dart';
+import 'package:flutter/material.dart';
+import 'package:autocomplete_textfield/autocomplete_textfield.dart';
+import 'package:doctor/models/patient.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
+import 'addprescriptions.dart';
+import 'addprescriptions.dart';
 
 class ap extends StatefulWidget {
   @override
@@ -13,9 +25,22 @@ class ap extends StatefulWidget {
 }
 
 class _apState extends State<ap> {
-  final preslist = DatabaseService().prescriptionListFromSnapshot();
   @override
   Widget build(BuildContext context) {
+      return StreamProvider<List<prescription>>.value(
+        value: DatabaseService().listp,
+        initialData: [],
+        builder: (context, patient) {
+          return plist(context);
+        },
+      );
+    }
+
+    Widget plist(BuildContext context) {
+      final appoints = Provider.of<List<prescription>>(context);
+      if (appoints.isEmpty || appoints == null) {
+        return CircularProgressIndicator();
+      }
     return Scaffold(
       backgroundColor: Color(0xffEFF0F5),
       body: Column(
@@ -110,11 +135,11 @@ class _apState extends State<ap> {
           // ),
           GestureDetector(
             onTap: () {
-              print(preslist);
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => (addPrescription(widget.s))),
+                    builder: (context) => (presp(widget.s))),
               );
             },
             child: Padding(
@@ -142,7 +167,7 @@ class _apState extends State<ap> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Center(
-                      child: Text('Add Prescription',
+                      child: Text('Prescriptions',
                           style: TextStyle(
                               fontSize: 20,
                               color: Color(0xff4C3C88),

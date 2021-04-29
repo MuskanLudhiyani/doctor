@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor/models/appointment.dart';
 import 'package:doctor/models/doctor.dart';
 import 'package:doctor/models/patient.dart';
+import 'package:doctor/models/prescription.dart';
 
 class DatabaseService {
   final String uid;
@@ -162,8 +163,20 @@ class DatabaseService {
     }).toList();
   }
 
-  prescriptionListFromSnapshot() {
-    return prescriptions.get();
+
+  Stream<List<prescription>> get listp {
+    return prescriptions.snapshots().map(prescriptionListFromSnapshot );
+  }
+
+  List<prescription> prescriptionListFromSnapshot (QuerySnapshot snapshot) {
+    return snapshot.docs.map((doc) {
+      return prescription(
+          disease: doc.data()['disease'] ?? '',
+          dname: doc.data()['dname'] ?? '',
+          pname: doc.data()['pname'] ?? '',
+          puid: doc.data()['puid'] ?? '',
+          suggestions: doc.data()['suggestions'] ?? '');
+    }).toList();
   }
 
   Future addPrescriptionToPatient(String puid, String pname, String dname,

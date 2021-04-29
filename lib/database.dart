@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor/models/appointment.dart';
 import 'package:doctor/models/doctor.dart';
@@ -60,7 +62,6 @@ class DatabaseService {
   }
 
   Future updateAppointmentData(
-    String aid,
     String dname,
     String pname,
     String duid,
@@ -69,10 +70,10 @@ class DatabaseService {
     String time,
     int approved,
   ) async {
-    return await appointments
-        .doc(duid + puid)
+    DocumentReference documentReference = appointments.doc();
+    return await documentReference
         .set({
-          'aid': aid,
+          'aid': documentReference.id,
           'dname': dname,
           'pname': pname,
           'doctor': duid,

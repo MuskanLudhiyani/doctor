@@ -146,7 +146,6 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
             onTap: () async {
               try {
                 await DatabaseService().updateAppointmentData(
-                    widget.doctoruid + puid,
                     widget.dname,
                     pname.text,
                     widget.doctoruid,

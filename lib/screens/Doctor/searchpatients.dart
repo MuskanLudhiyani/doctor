@@ -5,7 +5,7 @@ import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:doctor/models/patient.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
-
+import 'addprescriptions.dart';
 class searchp extends StatefulWidget {
   @override
   _searchpState createState() => _searchpState();
@@ -104,6 +104,10 @@ class _searchpState extends State<searchp> {
                           children: [
                             GestureDetector(
                               onTap:  () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => (addPrescription(appoints[index]))),
+                                );
 
                               },
                               child: Padding(
@@ -165,6 +169,11 @@ class _searchpState extends State<searchp> {
                           children: [
                             GestureDetector(
                             onTap:  () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => (addPrescription(appoints[index]))),
+                              );
+
 
                         },
                       child: Padding(

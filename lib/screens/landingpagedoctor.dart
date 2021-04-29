@@ -17,7 +17,7 @@ class _landingpagedoctorState extends State<landingpagedoctor> {
   int _selectedpage = 0;
   final pageoptions = [
     appointments(),
-    addPrescription(),
+
     searchp(),
     settingsd()
   ];
@@ -46,12 +46,7 @@ class _landingpagedoctorState extends State<landingpagedoctor> {
                     fontFamily: 'sans',
                   ),
                 )),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.tap_and_play_outlined,
-                  color: Colors.black,
-                ),
-                title: Text('add Prescription')),
+
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.search,

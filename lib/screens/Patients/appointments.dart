@@ -83,26 +83,7 @@ class _appointmentsState extends State<appointments> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Montserrat')),
-                            (appoints[index].approved == -1)
-                                ? Text('Pending',
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.orange,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Montserrat'))
-                                : (appoints[index] == 0)
-                                    ? Text('Rejected',
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.red,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'Montserrat'))
-                                    : Text('Approved',
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.green,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'Montserrat'))
+                            approvedStatus(appoints[index].approved)
                           ],
                         ),
                       ),
@@ -121,4 +102,29 @@ class _appointmentsState extends State<appointments> {
           }),
     );
   }
+}
+
+Widget approvedStatus(approved) {
+  if (approved == 0) {
+    return Text('Rejected',
+        style: TextStyle(
+            fontSize: 15,
+            color: Colors.red,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Montserrat'));
+  }
+  if (approved == 1) {
+    return Text('Approved',
+        style: TextStyle(
+            fontSize: 15,
+            color: Colors.green,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Montserrat'));
+  }
+  return Text('Pending',
+      style: TextStyle(
+          fontSize: 15,
+          color: Colors.orange,
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Montserrat'));
 }

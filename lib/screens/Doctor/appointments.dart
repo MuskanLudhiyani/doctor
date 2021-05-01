@@ -36,7 +36,7 @@ class _appointmentsState extends State<appointments> {
       body: ListView.builder(
           itemCount: appoints.length,
           itemBuilder: (context, index) {
-            DateTime x=DateTime.parse( appoints[index].date+" "+appoints[index].time);
+            DateTime x=DateTime.parse( appoints[index].date+" "+appoints[index].time+":00");
             if (appoints[index].doctor == _uid &&
                 appoints[index].approved != 0 &&  x.year >=DateTime.now().year  && x.month >=DateTime.now().month && x.day>DateTime.now().day ){
               return Column(

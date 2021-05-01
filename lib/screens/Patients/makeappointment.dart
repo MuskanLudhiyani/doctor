@@ -119,7 +119,7 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
                   cursorColor: Color(0xff90E5BF),
                   decoration: InputDecoration(
                       filled: true,
-                      hintText: "Time (hh:mm:ss)",
+                      hintText: "Time (hh:mm)",
                       suffixIcon: GestureDetector(
                         child: Text(
                           "",

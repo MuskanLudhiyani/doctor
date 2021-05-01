@@ -33,7 +33,7 @@ class _appointmentsState extends State<appointments> {
       body: ListView.builder(
           itemCount: appoints.length,
           itemBuilder: (context, index) {
-            String y=(appoints[index].date).toString()+" "+appoints[index].time.toString();
+            String y=(appoints[index].date).toString()+" "+appoints[index].time.toString()+":00";
             print (y);
             DateTime x=DateTime.parse(y);
             if (appoints[index].patient == _uid && x.year >=DateTime.now().year  && x.month >=DateTime.now().month && x.day>DateTime.now().day ) {

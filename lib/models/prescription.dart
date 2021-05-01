@@ -1,4 +1,5 @@
 class prescription {
+  final String presid;
   final String disease;
   final String dname;
   final String pname;
@@ -6,5 +7,10 @@ class prescription {
   final String suggestions;
 
   prescription(
-      {this.disease, this.dname, this.pname, this.puid, this.suggestions});
+      {this.presid,
+      this.disease,
+      this.dname,
+      this.pname,
+      this.puid,
+      this.suggestions});
 }

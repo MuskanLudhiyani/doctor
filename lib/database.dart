@@ -189,9 +189,10 @@ class DatabaseService {
 
   Future addPrescriptionToPatient(String puid, String pname, String dname,
       String disease, String suggestions) async {
-    return await prescriptions
-        .doc(puid)
+    DocumentReference documentReference = prescriptions.doc();
+    return await documentReference
         .set({
+          'presid': documentReference.id,
           'puid': puid,
           'pname': pname,
           'dname': dname,

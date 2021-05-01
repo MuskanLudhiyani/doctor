@@ -103,6 +103,7 @@ class _addPrescriptionState extends State<addPrescription> {
                 await DatabaseService().addPrescriptionToPatient(widget.s.puid,
                     widget.s.name, dname.text, disease.text, suggestion.text);
                 Fluttertoast.showToast(msg: 'Added Prescription');
+                Navigator.pop(context, true);
               } on FirebaseException catch (e) {
                 Fluttertoast.showToast(msg: e.message);
                 print(e);

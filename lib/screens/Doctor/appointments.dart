@@ -36,8 +36,9 @@ class _appointmentsState extends State<appointments> {
       body: ListView.builder(
           itemCount: appoints.length,
           itemBuilder: (context, index) {
+            DateTime x=DateTime.parse( appoints[index].date+" "+appoints[index].time);
             if (appoints[index].doctor == _uid &&
-                appoints[index].approved != 0) {
+                appoints[index].approved != 0 &&  x.year >=DateTime.now().year  && x.month >=DateTime.now().month && x.day>DateTime.now().day ){
               return Column(
                 children: [
                   Padding(
@@ -85,7 +86,7 @@ class _appointmentsState extends State<appointments> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'Montserrat')),
-                          (appoints[index].approved == -1)
+                          (appoints[index].approved == -1 )
                               ? Container(
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,

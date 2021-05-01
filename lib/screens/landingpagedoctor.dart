@@ -25,7 +25,7 @@ class _landingpagedoctorState extends State<landingpagedoctor> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('DocOn')),
+        title: Text('DocOn'),
         backgroundColor: Color(0xff4C3C88),
       ),
       body: pageoptions[_selectedpage],

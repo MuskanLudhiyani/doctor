@@ -85,7 +85,7 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
                   cursorColor: Color(0xff90E5BF),
                   decoration: InputDecoration(
                       filled: true,
-                      hintText: "Date",
+                      hintText: "Date (yyyy-mm-dd)",
                       suffixIcon: GestureDetector(
                         child: Text(
                           "",
@@ -119,7 +119,7 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
                   cursorColor: Color(0xff90E5BF),
                   decoration: InputDecoration(
                       filled: true,
-                      hintText: "Time",
+                      hintText: "Time (hh:mm:ss)",
                       suffixIcon: GestureDetector(
                         child: Text(
                           "",

@@ -39,20 +39,42 @@ class _searchdState extends State<searchd> {
       body: Container(
         child: Column(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                onChanged: (value) {
-                  setState(() {});
-                },
-                controller: controller,
-                decoration: InputDecoration(
-                    labelText: "Search",
-                    hintText: "Search",
-                    prefixIcon: Icon(Icons.search),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(25.0)))),
+            Theme(
+              data: ThemeData(
+                primaryColor: Color(0xffFFFFFF),
+                primaryColorDark: Color(0xffFFFFFF),
               ),
+              child: TextField(
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    setState(() {});
+                  },
+                  controller: controller,
+                  cursorColor: Color(0xff90E5BF),
+                  decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.search),
+                      filled: true,
+                      hintText: "Search",
+                      contentPadding: EdgeInsets.zero,
+                      hintStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
+                      suffixIcon: GestureDetector(
+                        child: Text(
+                          "",
+                          style: TextStyle(
+                            color: Color(0xff90E5BF),
+                          ),
+                        ),
+                      ),
+                      fillColor: Color(0xffFFFFFF),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: const BorderRadius.all(
+                          const Radius.circular(10.0),
+                        ),
+                      ))),
             ),
             Expanded(
               child: ListView.builder(

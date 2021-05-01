@@ -33,7 +33,10 @@ class _appointmentsState extends State<appointments> {
       body: ListView.builder(
           itemCount: appoints.length,
           itemBuilder: (context, index) {
-            if (appoints[index].patient == _uid) {
+            String y=(appoints[index].date).toString()+" "+appoints[index].time.toString();
+            print (y);
+            DateTime x=DateTime.parse(y);
+            if (appoints[index].patient == _uid && x.year >=DateTime.now().year  && x.month >=DateTime.now().month && x.day>DateTime.now().day ) {
               return Column(
                 children: [
                   GestureDetector(

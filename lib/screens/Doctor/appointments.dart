@@ -39,7 +39,8 @@ class _appointmentsState extends State<appointments> {
       body: ListView.builder(
           itemCount: appoints.length,
           itemBuilder: (context, index) {
-            if (appoints[index].doctor == _uid) {
+            if (appoints[index].doctor == _uid &&
+                appoints[index].approved != 0) {
               return Column(
                 children: [
                   Padding(

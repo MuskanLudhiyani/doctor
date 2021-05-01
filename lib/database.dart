@@ -172,12 +172,11 @@ class DatabaseService {
     }).toList();
   }
 
-
   Stream<List<prescription>> get listp {
-    return prescriptions.snapshots().map(prescriptionListFromSnapshot );
+    return prescriptions.snapshots().map(prescriptionListFromSnapshot);
   }
 
-  List<prescription> prescriptionListFromSnapshot (QuerySnapshot snapshot) {
+  List<prescription> prescriptionListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return prescription(
           disease: doc.data()['disease'] ?? '',

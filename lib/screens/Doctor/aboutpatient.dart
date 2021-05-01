@@ -14,6 +14,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 import 'addprescriptions.dart';
 import 'addprescriptions.dart';
+import 'package:doctor/database.dart';
 
 class ap extends StatefulWidget {
   @override
@@ -27,20 +28,20 @@ class ap extends StatefulWidget {
 class _apState extends State<ap> {
   @override
   Widget build(BuildContext context) {
-      return StreamProvider<List<prescription>>.value(
-        value: DatabaseService().listp,
-        initialData: [],
-        builder: (context, patient) {
-          return plist(context);
-        },
-      );
-    }
+    return StreamProvider<List<prescription>>.value(
+      value: DatabaseService().listp,
+      initialData: [],
+      builder: (context, patient) {
+        return plist(context);
+      },
+    );
+  }
 
-    Widget plist(BuildContext context) {
-      final appoints = Provider.of<List<prescription>>(context);
-      if (appoints.isEmpty || appoints == null) {
-        return CircularProgressIndicator();
-      }
+  Widget plist(BuildContext context) {
+    final appoints = Provider.of<List<prescription>>(context);
+    if (appoints.isEmpty || appoints == null) {
+      return CircularProgressIndicator();
+    }
     return Scaffold(
       backgroundColor: Color(0xffEFF0F5),
       body: Column(
@@ -66,7 +67,6 @@ class _apState extends State<ap> {
               width: 250,
             ),
           ),
-
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -123,23 +123,11 @@ class _apState extends State<ap> {
               ),
             ),
           ),
-          // Container(
-          //   child: ListView.builder(
-          //       itemBuilder: (BuildContext context, int index) {
-          //     return Container(
-          //       child: Column(
-          //         children: [],
-          //       ),
-          //     );
-          //   }),
-          // ),
           GestureDetector(
             onTap: () {
-
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => (presp(widget.s))),
+                MaterialPageRoute(builder: (context) => (presp(widget.s))),
               );
             },
             child: Padding(
@@ -167,7 +155,7 @@ class _apState extends State<ap> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Center(
-                      child: Text('Prescriptions',
+                      child: Text('Past Prescriptions',
                           style: TextStyle(
                               fontSize: 20,
                               color: Color(0xff4C3C88),

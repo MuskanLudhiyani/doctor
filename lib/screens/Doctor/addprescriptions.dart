@@ -22,6 +22,7 @@ class _addPrescriptionState extends State<addPrescription> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffEFF0F5),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

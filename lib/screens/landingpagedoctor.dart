@@ -24,6 +24,7 @@ class _landingpagedoctorState extends State<landingpagedoctor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffEFF0F5),
       appBar: AppBar(
         title: Text('DocOn'),
         backgroundColor: Color(0xff4C3C88),
@@ -60,11 +61,11 @@ class _landingpagedoctorState extends State<landingpagedoctor> {
                 )),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.settings,
+                  Icons.more_horiz,
                   color: Colors.black,
                 ),
                 title: Text(
-                  'Settings',
+                    'More',
                   style: TextStyle(
                     fontFamily: 'sans',
                   ),

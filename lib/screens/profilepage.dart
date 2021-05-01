@@ -9,7 +9,7 @@ class _profileState extends State<profile> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xffEFF0F5),
       body: ListView(
         children: <Widget>[
           Column(

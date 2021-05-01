@@ -34,12 +34,14 @@ class _searchpState extends State<searchp> {
       return CircularProgressIndicator();
     }
     return new Scaffold(
+      backgroundColor: Color(0xffEFF0F5),
       body: Container(
         decoration: BoxDecoration(
+
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
               color: Colors.white, style: BorderStyle.solid, width: 1.0),
-          color: Colors.white,
+          color: Color(0xffEFF0F5),
           boxShadow: [
             BoxShadow(
               color: Color(0xffF0EFFE),
@@ -51,43 +53,49 @@ class _searchpState extends State<searchp> {
         ),
         child: Column(
           children: <Widget>[
-            Theme(
-              data: ThemeData(
-                primaryColor: Color(0xffFFFFFF),
-                primaryColorDark: Color(0xffFFFFFF),
-              ),
-              child: TextField(
-                  textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    setState(() {});
-                  },
-                  controller: controller,
-                  cursorColor: Color(0xff90E5BF),
-                  decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                      filled: true,
-                      hintText: "Search",
-                      contentPadding: EdgeInsets.zero,
-                      hintStyle: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red,
-                      ),
-                      suffixIcon: GestureDetector(
-                        child: Text(
-                          "",
-                          style: TextStyle(
-                            color: Color(0xff90E5BF),
+            SizedBox(height: 10,),
+
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20,0,20,0),
+              child: Theme(
+                data: ThemeData(
+                  primaryColor: Color(0xffFFFFFF),
+                  primaryColorDark: Color(0xffFFFFFF),
+                ),
+                child: TextField(
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      setState(() {});
+                    },
+                    controller: controller,
+                    cursorColor: Color(0xff90E5BF),
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search),
+                        filled: true,
+                        hintText: "Search",
+                        contentPadding: EdgeInsets.zero,
+                        hintStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red,
+                        ),
+                        suffixIcon: GestureDetector(
+                          child: Text(
+                            "",
+                            style: TextStyle(
+                              color: Color(0xff90E5BF),
+                            ),
                           ),
                         ),
-                      ),
-                      fillColor: Color(0xffFFFFFF),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: const BorderRadius.all(
-                          const Radius.circular(10.0),
-                        ),
-                      ))),
+                        fillColor: Color(0xffFFFFFF),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: const BorderRadius.all(
+                            const Radius.circular(10.0),
+                          ),
+                        ))),
+              ),
             ),
+            SizedBox(height: 10,),
             Expanded(
               child: ListView.builder(
                   shrinkWrap: true,
@@ -143,7 +151,7 @@ class _searchpState extends State<searchp> {
                             ),
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 10,
                           )
                         ],
                       );
@@ -208,7 +216,7 @@ class _searchpState extends State<searchp> {
                             ),
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 10,
                           )
                         ],
                       );

@@ -4,18 +4,18 @@ import 'package:doctor/database.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor/models/patient.dart';
 import 'package:provider/provider.dart';
-import 'addprescriptions.dart';
 
-class presp extends StatefulWidget {
+
+class presp2 extends StatefulWidget {
   @override
-  _prespState createState() => _prespState();
+  _presp2State createState() => _presp2State();
   patient s;
-  presp(patient p) {
+  presp2(patient p) {
     s = p;
   }
 }
 
-class _prespState extends State<presp> {
+class _presp2State extends State<presp2> {
   @override
   TextEditingController controller = new TextEditingController();
   @override
@@ -90,33 +90,30 @@ class _prespState extends State<presp> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Center(
-                                        child: Flexible(
-                                          child: Row(
-                                            children: [Center(
-                                              child: Text(
-                                                  'Doctor:',
-                                                  style: TextStyle(
-                                                      fontSize: 20,
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.bold,
-                                                      fontFamily: 'Montserrat')),
-
-                                            ),
-                                              SizedBox(width: 10,),
-                                              Center(
-                                                child: Text(
-                                                    ' ${appoints[index].dname}',
-                                                    style: TextStyle(
-                                                        fontSize: 20,
-                                                        color: Color(0xff4C3C88),
-                                                        fontWeight: FontWeight.bold,
-                                                        fontFamily: 'Montserrat')),
-                                              ),],
+                                        child: Row(
+                                          children: [Center(
+                                            child: Text(
+                                                'Doctor:',
+                                                style: TextStyle(
+                                                    fontSize: 20,
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'Montserrat')),
 
                                           ),
+                                            SizedBox(width: 10,),
+                                            Center(
+                                              child: Text(
+                                                  ' ${appoints[index].dname}',
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      color: Color(0xff4C3C88),
+                                                      fontWeight: FontWeight.bold,
+                                                      fontFamily: 'Montserrat')),
+                                            ),],
+
                                         ),
                                       ),
-                                      SizedBox(height: 10,),
                                       Center(
                                         child: Row(
                                           children: [Center(
@@ -142,7 +139,6 @@ class _prespState extends State<presp> {
 
                                         ),
                                       ),
-                                      SizedBox(height: 10,),
                                       Center(
                                         child: Row(
                                           children: [Center(
@@ -186,51 +182,7 @@ class _prespState extends State<presp> {
                       }
                     }),
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => (addPrescription(widget.s))),
-                  );
-                },
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                  child: Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                          color: Colors.white,
-                          style: BorderStyle.solid,
-                          width: 1.0),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0xffF0EFFE),
-                          blurRadius: 2.0,
-                          spreadRadius: 0.0,
-                          offset: Offset(
-                              2.0, 2.0), // shadow direction: bottom right
-                        )
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Center(
-                          child: Text('Add Prescription',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Color(0xff4C3C88),
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Montserrat')),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              )
+
             ],
           ),
         ),

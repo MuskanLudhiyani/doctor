@@ -14,7 +14,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 import 'addprescriptions.dart';
 import 'addprescriptions.dart';
-import 'package:doctor/database.dart';
 
 class ap extends StatefulWidget {
   @override
@@ -67,6 +66,7 @@ class _apState extends State<ap> {
               width: 250,
             ),
           ),
+
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -123,11 +123,23 @@ class _apState extends State<ap> {
               ),
             ),
           ),
+          // Container(
+          //   child: ListView.builder(
+          //       itemBuilder: (BuildContext context, int index) {
+          //     return Container(
+          //       child: Column(
+          //         children: [],
+          //       ),
+          //     );
+          //   }),
+          // ),
           GestureDetector(
             onTap: () {
+
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => (presp(widget.s))),
+                MaterialPageRoute(
+                    builder: (context) => (presp(widget.s))),
               );
             },
             child: Padding(
@@ -147,7 +159,7 @@ class _apState extends State<ap> {
                       blurRadius: 2.0,
                       spreadRadius: 0.0,
                       offset:
-                          Offset(2.0, 2.0), // shadow direction: bottom right
+                      Offset(2.0, 2.0), // shadow direction: bottom right
                     )
                   ],
                 ),
@@ -155,7 +167,7 @@ class _apState extends State<ap> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Center(
-                      child: Text('Past Prescriptions',
+                      child: Text('Prescriptions',
                           style: TextStyle(
                               fontSize: 20,
                               color: Color(0xff4C3C88),

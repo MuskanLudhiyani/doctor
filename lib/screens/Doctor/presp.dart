@@ -31,9 +31,6 @@ class _prespState extends State<presp> {
 
   Widget plist(BuildContext context) {
     final appoints = Provider.of<List<prescription>>(context);
-    if (appoints.isEmpty || appoints == null) {
-      return CircularProgressIndicator();
-    }
     return new Scaffold(
       backgroundColor: Color(0xffEFF0F5),
       body: Container(
@@ -110,8 +107,7 @@ class _prespState extends State<presp> {
                                                   ' ${appoints[index].dname}',
                                                   style: TextStyle(
                                                       fontSize: 20,
-                                                      color:
-                                                          Color(0xff4C3C88),
+                                                      color: Color(0xff4C3C88),
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       fontFamily:

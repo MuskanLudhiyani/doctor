@@ -35,9 +35,6 @@ class _settingspState extends State<settingsp> {
 
   Widget plist(BuildContext context) {
     final appoints = Provider.of<List<patient>>(context);
-    if (appoints.isEmpty || appoints == null) {
-      return CircularProgressIndicator();
-    }
     return new Scaffold(
       backgroundColor: Color(0xffEFF0F5),
       body: Container(
@@ -57,20 +54,17 @@ class _settingspState extends State<settingsp> {
         ),
         child: Column(
           children: <Widget>[
-
             Expanded(
               child: ListView.builder(
-
                   shrinkWrap: true,
                   itemCount: appoints.length,
                   itemBuilder: (context, index) {
-                    if (appoints[index].puid==_uid) {
-                      patient s=appoints[index];
-                      p=s;
+                    if (appoints[index].puid == _uid) {
+                      patient s = appoints[index];
+                      p = s;
                       return Column(
                         children: [
-                          SizedBox(
-                              height: 10),
+                          SizedBox(height: 10),
                           Center(
                             child: Container(
                               decoration: BoxDecoration(
@@ -85,19 +79,21 @@ class _settingspState extends State<settingsp> {
                               width: 200,
                             ),
                           ),
-
                           Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(
-                                  color: Colors.white, style: BorderStyle.solid, width: 1.0),
+                                  color: Colors.white,
+                                  style: BorderStyle.solid,
+                                  width: 1.0),
                               color: Colors.white,
                               boxShadow: [
                                 BoxShadow(
                                   color: Color(0xffF0EFFE),
                                   blurRadius: 2.0,
                                   spreadRadius: 0.0,
-                                  offset: Offset(2.0, 2.0), // shadow direction: bottom right
+                                  offset: Offset(2.0,
+                                      2.0), // shadow direction: bottom right
                                 )
                               ],
                             ),
@@ -105,7 +101,8 @@ class _settingspState extends State<settingsp> {
                             child: Padding(
                               padding: const EdgeInsets.all(20.0),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Name:      ${s.name}",
@@ -147,22 +144,19 @@ class _settingspState extends State<settingsp> {
                           )
                         ],
                       );
-
-
-
                     } else {
                       return Container();
                     }
                   }),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             GestureDetector(
               onTap: () {
-
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => (presp2(p))),
+                  MaterialPageRoute(builder: (context) => (presp2(p))),
                 );
               },
               child: Padding(
@@ -182,7 +176,7 @@ class _settingspState extends State<settingsp> {
                         blurRadius: 2.0,
                         spreadRadius: 0.0,
                         offset:
-                        Offset(2.0, 2.0), // shadow direction: bottom right
+                            Offset(2.0, 2.0), // shadow direction: bottom right
                       )
                     ],
                   ),
@@ -202,7 +196,9 @@ class _settingspState extends State<settingsp> {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             GestureDetector(
               onTap: () async {
                 await auth.signOut();
@@ -214,14 +210,17 @@ class _settingspState extends State<settingsp> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                        color: Colors.white, style: BorderStyle.solid, width: 1.0),
+                        color: Colors.white,
+                        style: BorderStyle.solid,
+                        width: 1.0),
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
                         color: Color(0xffF0EFFE),
                         blurRadius: 2.0,
                         spreadRadius: 0.0,
-                        offset: Offset(2.0, 2.0), // shadow direction: bottom right
+                        offset:
+                            Offset(2.0, 2.0), // shadow direction: bottom right
                       )
                     ],
                   ),
@@ -241,8 +240,9 @@ class _settingspState extends State<settingsp> {
                 ),
               ),
             ),
-            SizedBox(height: 10,)
-
+            SizedBox(
+              height: 10,
+            )
           ],
         ),
       ),

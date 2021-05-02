@@ -31,14 +31,10 @@ class _searchpState extends State<searchp> {
 
   Widget plist(BuildContext context) {
     final appoints = Provider.of<List<patient>>(context);
-    if (appoints.isEmpty || appoints == null) {
-      return CircularProgressIndicator();
-    }
     return new Scaffold(
       backgroundColor: Color(0xffEFF0F5),
       body: Container(
         decoration: BoxDecoration(
-
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
               color: Colors.white, style: BorderStyle.solid, width: 1.0),
@@ -54,10 +50,11 @@ class _searchpState extends State<searchp> {
         ),
         child: Column(
           children: <Widget>[
-            SizedBox(height: 10,),
-
+            SizedBox(
+              height: 10,
+            ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(20,0,20,0),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Theme(
                 data: ThemeData(
                   primaryColor: Color(0xffFFFFFF),
@@ -96,14 +93,16 @@ class _searchpState extends State<searchp> {
                         ))),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Expanded(
               child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: appoints.length,
                   itemBuilder: (context, index) {
                     if (controller.text.isEmpty) {
-                      return  Column(
+                      return Column(
                         children: [
                           GestureDetector(
                             onTap: () {
@@ -111,7 +110,7 @@ class _searchpState extends State<searchp> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                    (ap(appoints[index]))),
+                                        (ap(appoints[index]))),
                               );
                             },
                             child: Padding(

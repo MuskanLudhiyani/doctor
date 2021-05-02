@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:doctor/models/patient.dart';
 import 'package:provider/provider.dart';
 
-
 class presp2 extends StatefulWidget {
   @override
   _presp2State createState() => _presp2State();
@@ -31,9 +30,6 @@ class _presp2State extends State<presp2> {
 
   Widget plist(BuildContext context) {
     final appoints = Provider.of<List<prescription>>(context);
-    if (appoints.isEmpty || appoints == null) {
-      return CircularProgressIndicator();
-    }
     return new Scaffold(
       backgroundColor: Color(0xffEFF0F5),
       body: Container(
@@ -91,82 +87,97 @@ class _presp2State extends State<presp2> {
                                     children: <Widget>[
                                       Center(
                                         child: Row(
-                                          children: [Center(
-                                            child: Text(
-                                                'Doctor:',
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    color: Colors.black,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontFamily: 'Montserrat')),
-
-                                          ),
-                                            SizedBox(width: 10,),
+                                          children: [
+                                            Center(
+                                              child: Text('Doctor:',
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontFamily:
+                                                          'Montserrat')),
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
                                             Center(
                                               child: Text(
                                                   ' ${appoints[index].dname}',
                                                   style: TextStyle(
                                                       fontSize: 20,
                                                       color: Color(0xff4C3C88),
-                                                      fontWeight: FontWeight.bold,
-                                                      fontFamily: 'Montserrat')),
-                                            ),],
-
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontFamily:
+                                                          'Montserrat')),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                       Center(
                                         child: Row(
-                                          children: [Center(
-                                            child: Text(
-                                                'Disease:',
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    color: Colors.black,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontFamily: 'Montserrat')),
-
-                                          ),
-                                            SizedBox(width: 10,),
+                                          children: [
+                                            Center(
+                                              child: Text('Disease:',
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontFamily:
+                                                          'Montserrat')),
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
                                             Center(
                                               child: Text(
                                                   ' ${appoints[index].disease}',
                                                   style: TextStyle(
                                                       fontSize: 20,
                                                       color: Color(0xff4C3C88),
-                                                      fontWeight: FontWeight.bold,
-                                                      fontFamily: 'Montserrat')),
-                                            ),],
-
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontFamily:
+                                                          'Montserrat')),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                       Center(
                                         child: Row(
-                                          children: [Center(
-                                            child: Text(
-                                                'Medicines:',
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    color: Colors.black,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontFamily: 'Montserrat')),
-
-                                          ),
-                                            SizedBox(width: 10,),
+                                          children: [
+                                            Center(
+                                              child: Text('Medicines:',
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontFamily:
+                                                          'Montserrat')),
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
                                             Flexible(
                                               child: Center(
                                                 child: Text(
                                                     '${appoints[index].suggestions}',
                                                     style: TextStyle(
                                                         fontSize: 20,
-                                                        color: Color(0xff4C3C88),
-                                                        fontWeight: FontWeight.bold,
-                                                        fontFamily: 'Montserrat')),
+                                                        color:
+                                                            Color(0xff4C3C88),
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontFamily:
+                                                            'Montserrat')),
                                               ),
-                                            ),],
-
+                                            ),
+                                          ],
                                         ),
                                       ),
-
                                     ],
                                   ),
                                 ),
@@ -182,7 +193,6 @@ class _presp2State extends State<presp2> {
                       }
                     }),
               ),
-
             ],
           ),
         ),

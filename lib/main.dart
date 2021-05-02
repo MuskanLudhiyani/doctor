@@ -38,7 +38,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffEFF0F5),
-
       body: Center(
         child: Column(
           children: [
@@ -50,12 +49,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [Color(0xff4C3C88), Colors.red]),
-
-                    borderRadius: BorderRadius.only(
+                borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(40),
                   bottomRight: Radius.circular(40),
                 ),
-
               ),
               child: Center(
                 child: Container(
@@ -76,12 +73,12 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 20,
             ),
             GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => (signin())),
-                  );
-                },
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => (signin())),
+                );
+              },
               child: Padding(
                 padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Container(
@@ -110,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Text('Sign In',
                             style: TextStyle(
                                 fontSize: 20,
-                                color:Color(0xff4C3C88),
+                                color: Color(0xff4C3C88),
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Montserrat')),
                       )
@@ -124,13 +121,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             SizedBox(height: 0),
             GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => (signup())),
-                  );
-                },
-
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => (signup())),
+                );
+              },
               child: Padding(
                 padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Container(
@@ -167,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-            ),  
+            ),
           ],
         ),
       ),

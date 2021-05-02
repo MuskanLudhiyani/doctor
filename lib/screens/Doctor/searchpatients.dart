@@ -111,7 +111,7 @@ class _searchpState extends State<searchp> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                    (presp(appoints[index]))),
+                                    (ap(appoints[index]))),
                               );
                             },
                             child: Padding(
@@ -176,7 +176,7 @@ class _searchpState extends State<searchp> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        (presp(appoints[index]))),
+                                        (ap(appoints[index]))),
                               );
                             },
                             child: Padding(

@@ -28,17 +28,18 @@ class _appointmentsState extends State<appointments> {
   Widget appointlist(BuildContext context) {
     final String _uid = FirebaseAuth.instance.currentUser.uid;
     final appoints = Provider.of<List<appointment>>(context);
-    if (appoints.isEmpty || appoints == null) {
-      return CircularProgressIndicator();
-    }
     return Scaffold(
       backgroundColor: Color(0xffEFF0F5),
       body: ListView.builder(
           itemCount: appoints.length,
           itemBuilder: (context, index) {
-            DateTime x=DateTime.parse( appoints[index].date+" "+appoints[index].time+":00");
+            DateTime x = DateTime.parse(
+                appoints[index].date + " " + appoints[index].time + ":00");
             if (appoints[index].doctor == _uid &&
-                appoints[index].approved != 0 &&  x.year >=DateTime.now().year  && x.month >=DateTime.now().month && x.day>DateTime.now().day ){
+                appoints[index].approved != 0 &&
+                x.year >= DateTime.now().year &&
+                x.month >= DateTime.now().month &&
+                x.day > DateTime.now().day) {
               return Column(
                 children: [
                   Padding(
@@ -86,7 +87,7 @@ class _appointmentsState extends State<appointments> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'Montserrat')),
-                          (appoints[index].approved == -1 )
+                          (appoints[index].approved == -1)
                               ? Container(
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,

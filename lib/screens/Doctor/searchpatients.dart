@@ -1,6 +1,7 @@
 import 'package:doctor/database.dart';
 import 'package:doctor/screens/Doctor/aboutpatient.dart';
 import 'package:doctor/screens/Doctor/appointments.dart';
+import 'package:doctor/screens/Doctor/presp.dart';
 import 'package:flutter/material.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:doctor/models/patient.dart';
@@ -102,7 +103,7 @@ class _searchpState extends State<searchp> {
                   itemCount: appoints.length,
                   itemBuilder: (context, index) {
                     if (controller.text.isEmpty) {
-                      return Column(
+                      return  Column(
                         children: [
                           GestureDetector(
                             onTap: () {
@@ -110,7 +111,7 @@ class _searchpState extends State<searchp> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        (ap(appoints[index]))),
+                                    (presp(appoints[index]))),
                               );
                             },
                             child: Padding(
@@ -175,7 +176,7 @@ class _searchpState extends State<searchp> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        (addPrescription(appoints[index]))),
+                                        (presp(appoints[index]))),
                               );
                             },
                             child: Padding(

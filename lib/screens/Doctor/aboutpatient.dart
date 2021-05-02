@@ -12,6 +12,8 @@ import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:doctor/models/patient.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
+import '../../models/patient.dart';
+import '../../models/patient.dart';
 import 'addprescriptions.dart';
 import 'addprescriptions.dart';
 
@@ -27,20 +29,10 @@ class ap extends StatefulWidget {
 class _apState extends State<ap> {
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<List<prescription>>.value(
-      value: DatabaseService().listp,
-      initialData: [],
-      builder: (context, patient) {
-        return plist(context);
-      },
-    );
+    return plist(context);
   }
 
   Widget plist(BuildContext context) {
-    final appoints = Provider.of<List<prescription>>(context);
-    if (appoints.isEmpty || appoints == null) {
-      return CircularProgressIndicator();
-    }
     return Scaffold(
       backgroundColor: Color(0xffEFF0F5),
       body: Column(
@@ -135,11 +127,9 @@ class _apState extends State<ap> {
           // ),
           GestureDetector(
             onTap: () {
-
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => (presp(widget.s))),
+                MaterialPageRoute(builder: (context) => (presp(widget.s))),
               );
             },
             child: Padding(
@@ -159,7 +149,7 @@ class _apState extends State<ap> {
                       blurRadius: 2.0,
                       spreadRadius: 0.0,
                       offset:
-                      Offset(2.0, 2.0), // shadow direction: bottom right
+                          Offset(2.0, 2.0), // shadow direction: bottom right
                     )
                   ],
                 ),

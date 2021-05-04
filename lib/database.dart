@@ -95,6 +95,10 @@ class DatabaseService {
     return await appointments.doc(aid).update({'approved': 0});
   }
 
+  Future deleteAppointment(String aid) async {
+    return await appointments.doc(aid).delete();
+  }
+
   Future<bool> checkIfDoctor() {
     return doctors.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {

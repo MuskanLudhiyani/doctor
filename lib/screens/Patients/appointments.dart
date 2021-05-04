@@ -46,8 +46,7 @@ class _appointmentsState extends State<appointments> {
                     onTap: () {},
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                      child: Container(
-                        height: 80,
+                      child: Container( 
                         width: 500,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -89,7 +88,13 @@ class _appointmentsState extends State<appointments> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Montserrat')),
-                            approvedStatus(appoints[index].approved)
+                            approvedStatus(appoints[index].approved),
+                            ElevatedButton(
+                                onPressed: () {
+                                  DatabaseService()
+                                      .deleteAppointment(appoints[index].aid);
+                                },
+                                child: Text('Delete Appointment'))
                           ],
                         ),
                       ),

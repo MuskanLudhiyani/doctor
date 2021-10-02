@@ -13,7 +13,7 @@ view past prescriptions. All these changes happen in Real-Time.
 <a href="https://github.com/GireendraSS"><img src="https://avatars.githubusercontent.com/u/53966629?v=4" width="200"></img></a>
 
 [Gireendra Singh Shekhawat](https://github.com/GireendraSS)
-## Screenshots
+
 
 
 
